@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Lora", serif; /* Default to Lora */
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-lora: "Lora", serif;
+  --font-dm-mono: "DM Mono", monospace;
+
+  --color-bg-warm: #fffdf9;
+  --color-bg-warm-secondary: #fdf6ed;
+  --color-text-dark: #1a1410;
+  --color-text-muted: #5a4535;
+  --color-text-light: #8a6545;
+  
+  --color-accent: #c2611a;
+  --color-accent-hover: #a84e15;
+  --color-accent-hover-dark: #e8803a;
+  --color-accent-light: #fde8d4;
+  --color-accent-border: #f2c99a;
+
+  --animate-scroll-pulse: scrollPulse 2s ease infinite;
+  --animate-lamp-glow: lampGlow 3s ease infinite;
+  --animate-float: float 4s ease infinite;
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+  @keyframes lampGlow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg-warm);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(194, 97, 26, 0.18);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-warm);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c2a882;
+  border-radius: 3px;
+}
