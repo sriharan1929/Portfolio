@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { SectionLabel } from "../ui/SectionLabel";
-import { DeskIllustration } from "./DeskIllustration";
-import profileImg from "../../assets/Profile.jpg";
+import profilePic from "../../assets/Profile.jpg";
 
 export const Hero = () => {
   const [mounted, setMounted] = useState(false);
@@ -17,9 +16,9 @@ export const Hero = () => {
       <div className="absolute bottom-[15%] left-[5%] w-[300px] h-[300px] rounded-full bg-[radial-gradient(circle,rgba(194,97,26,0.08)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[1100px] mx-auto w-full flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-24 lg:pt-16 pb-16 lg:pb-0">
-        {/* Left – Highlight Panel */}
-        <div className={`relative bg-[#fdf5ed] border border-[#f0ddc8] rounded-[32px] p-8 lg:p-10 transition-all duration-700 ease-in-out delay-100 flex flex-col-reverse md:flex-row items-center justify-between shadow-sm ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>
-          <div className="max-w-[460px] relative z-10 mt-8 md:mt-0">
+        {/* Left – Text */}
+        <div>
+          <div className={`transition-all duration-700 ease-in-out delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-light border border-accent-border mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <SectionLabel>Available for opportunities · 2026</SectionLabel>
@@ -33,7 +32,7 @@ export const Hero = () => {
               Full Stack Developer · React · AI · Backend
             </p>
 
-            <p className="text-[1.05rem] leading-[1.75] text-text-muted mb-10 font-lora">
+            <p className="text-[1.05rem] leading-[1.75] text-text-muted max-w-[460px] mb-10 font-lora">
               Computer Science undergraduate building React, AI-powered systems,
               and backend-driven products with clarity, structure, and technical depth.
             </p>
@@ -57,19 +56,38 @@ export const Hero = () => {
               </a>
             </div>
           </div>
-
-          <div className="shrink-0 relative z-10 md:ml-6">
-            <img 
-              src={profileImg} 
-              alt="Sriharan R" 
-              className="w-[140px] h-[140px] md:w-[160px] md:h-[160px] lg:w-[180px] lg:h-[180px] rounded-full object-cover shadow-[0_8px_30px_rgba(194,97,26,0.15)] border-4 border-[#fffdf9]" 
-            />
-          </div>
         </div>
 
-        {/* Right – Desk composition */}
+        {/* Right – Profile Picture Card */}
         <div className={`flex justify-center transition-all duration-800 ease-in-out delay-300 ${mounted ? "opacity-100 translate-x-0" : "opacity-0 translate-x-7"}`}>
-          <DeskIllustration />
+          <div className="relative w-full max-w-[420px]">
+            {/* Main Image Card */}
+            <div className="bg-bg-warm p-4 rounded-[2.5rem] border border-[#f0ddc8] shadow-[0_8px_40px_rgba(194,97,26,0.1),0_2px_12px_rgba(0,0,0,0.04)] transform transition-transform duration-500 hover:-translate-y-2">
+              <div className="w-full aspect-[4/5] rounded-[2rem] overflow-hidden bg-[#e8dcc8]">
+                <img 
+                  src={profilePic} 
+                  alt="Sriharan R" 
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+            </div>
+
+            {/* Floating Details Card */}
+            <div className="absolute -bottom-6 -left-2 md:-left-6 bg-white p-4 rounded-2xl border border-[#f0ddc8] shadow-[0_12px_30px_rgba(194,97,26,0.15)] flex items-center gap-4 animate-float">
+              <div className="w-12 h-12 rounded-full bg-[#fdf4e8] flex items-center justify-center text-[22px]">
+                🚀
+              </div>
+              <div>
+                <div className="text-[13px] font-bold text-text-dark font-dm-mono mb-0.5">Open to Work</div>
+                <div className="text-[11px] text-text-muted">Graduating 2026</div>
+              </div>
+            </div>
+            
+            {/* Floating Badge Right */}
+            <div className="absolute top-10 -right-2 md:-right-6 px-4 py-2.5 bg-accent text-white rounded-full text-[12px] font-semibold font-dm-mono shadow-[0_4px_16px_rgba(194,97,26,0.3)] animate-[float_4s_ease-in-out_infinite_reverse]">
+              AI Builder
+            </div>
+          </div>
         </div>
       </div>
 
