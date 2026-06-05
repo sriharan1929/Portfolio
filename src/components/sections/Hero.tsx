@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { SectionLabel } from "../ui/SectionLabel";
 import { DeskIllustration } from "./DeskIllustration";
+import profileImg from "../../assets/Profile.jpg";
 
 export const Hero = () => {
   const [mounted, setMounted] = useState(false);
@@ -16,9 +17,9 @@ export const Hero = () => {
       <div className="absolute bottom-[15%] left-[5%] w-[300px] h-[300px] rounded-full bg-[radial-gradient(circle,rgba(194,97,26,0.08)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[1100px] mx-auto w-full flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-24 lg:pt-16 pb-16 lg:pb-0">
-        {/* Left – Text */}
-        <div>
-          <div className={`transition-all duration-700 ease-in-out delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>
+        {/* Left – Highlight Panel */}
+        <div className={`relative bg-[#fdf5ed] border border-[#f0ddc8] rounded-[32px] p-8 lg:p-10 transition-all duration-700 ease-in-out delay-100 flex flex-col-reverse md:flex-row items-center justify-between shadow-sm ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>
+          <div className="max-w-[460px] relative z-10 mt-8 md:mt-0">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-light border border-accent-border mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <SectionLabel>Available for opportunities · 2026</SectionLabel>
@@ -32,7 +33,7 @@ export const Hero = () => {
               Full Stack Developer · React · AI · Backend
             </p>
 
-            <p className="text-[1.05rem] leading-[1.75] text-text-muted max-w-[460px] mb-10 font-lora">
+            <p className="text-[1.05rem] leading-[1.75] text-text-muted mb-10 font-lora">
               Computer Science undergraduate building React, AI-powered systems,
               and backend-driven products with clarity, structure, and technical depth.
             </p>
@@ -55,6 +56,14 @@ export const Hero = () => {
                 Get in touch
               </a>
             </div>
+          </div>
+
+          <div className="shrink-0 relative z-10 md:ml-6">
+            <img 
+              src={profileImg} 
+              alt="Sriharan R" 
+              className="w-[140px] h-[140px] md:w-[160px] md:h-[160px] lg:w-[180px] lg:h-[180px] rounded-full object-cover shadow-[0_8px_30px_rgba(194,97,26,0.15)] border-4 border-[#fffdf9]" 
+            />
           </div>
         </div>
 
