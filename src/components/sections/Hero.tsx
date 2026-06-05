@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { SectionLabel } from "../ui/SectionLabel";
+import { DeskIllustration } from "./DeskIllustration";
 import profilePic from "../../assets/Profile.jpg";
 
 export const Hero = () => {
@@ -17,77 +18,62 @@ export const Hero = () => {
 
       <div className="max-w-[1100px] mx-auto w-full flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-24 lg:pt-16 pb-16 lg:pb-0">
         {/* Left – Text */}
-        <div>
+        <div className="w-full">
           <div className={`transition-all duration-700 ease-in-out delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-light border border-accent-border mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-              <SectionLabel>Available for opportunities · 2026</SectionLabel>
-            </div>
+            
+            <div className="bg-white/40 backdrop-blur-xl border border-white/60 p-8 md:p-10 rounded-[32px] shadow-[0_8px_32px_rgba(194,97,26,0.05)] relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-accent/5 rounded-full blur-3xl -z-10" />
+              
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-light border border-accent-border mb-8 relative z-10">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                <SectionLabel>Available for opportunities · 2026</SectionLabel>
+              </div>
 
-            <h1 className="font-cormorant text-[clamp(2.8rem,5.5vw,4.2rem)] font-bold text-text-dark leading-[1.08] tracking-[-0.03em] mb-5">
-              Sriharan R
-            </h1>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6 relative z-10">
+                <div className="relative shrink-0 group">
+                  <div className="absolute -inset-1.5 rounded-full border border-accent/40 animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+                  <div className="absolute -inset-0.5 rounded-full border-[2px] border-[#e8a05a] animate-[spin_10s_linear_infinite] border-dashed"></div>
+                  <img src={profilePic} alt="Sriharan R" className="w-24 h-24 rounded-full object-cover border-[3px] border-white shadow-xl relative z-10 group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <h1 className="font-cormorant text-[clamp(2.8rem,5.5vw,4.2rem)] font-bold text-text-dark leading-[1.08] tracking-[-0.03em]">
+                  Sriharan R
+                </h1>
+              </div>
 
-            <p className="font-semibold text-accent font-dm-mono tracking-[0.04em] mb-5 uppercase text-[12px]">
-              Full Stack Developer · React · AI · Backend
-            </p>
+              <p className="font-semibold text-accent font-dm-mono tracking-[0.04em] mb-5 uppercase text-[12px] relative z-10">
+                Full Stack Developer · React · AI · Backend
+              </p>
 
-            <p className="text-[1.05rem] leading-[1.75] text-text-muted max-w-[460px] mb-10 font-lora">
-              Computer Science undergraduate building React, AI-powered systems,
-              and backend-driven products with clarity, structure, and technical depth.
-            </p>
+              <p className="text-[1.05rem] leading-[1.75] text-text-muted max-w-[460px] mb-10 font-lora relative z-10">
+                Computer Science undergraduate building React, AI-powered systems,
+                and backend-driven products with clarity, structure, and technical depth.
+              </p>
 
-            <div className="flex gap-4 flex-wrap">
-              <a
-                href="#projects"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-accent text-white font-semibold text-[14px] no-underline tracking-[0.02em] transition-all duration-200 hover:bg-accent-hover hover:-translate-y-[1px]"
-              >
-                View Projects →
-              </a>
-              <a
-                href="mailto:sriharan8072@gmail.com"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-transparent text-text-dark font-semibold text-[14px] no-underline tracking-[0.02em] border-[1.5px] border-[#c2a882] transition-all duration-200 hover:border-accent hover:-translate-y-[1px]"
-              >
-                Get in touch
-              </a>
+              <div className="flex gap-4 flex-wrap relative z-10">
+                <a
+                  href="#projects"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-accent text-white font-semibold text-[14px] no-underline tracking-[0.02em] transition-all duration-200 hover:bg-accent-hover hover:-translate-y-[1px] shadow-md hover:shadow-lg"
+                >
+                  View Projects →
+                </a>
+                <a
+                  href="mailto:sriharan8072@gmail.com"
+                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white/50 backdrop-blur-sm text-text-dark font-semibold text-[14px] no-underline tracking-[0.02em] border-[1.5px] border-[#c2a882]/50 transition-all duration-200 hover:border-accent hover:bg-white/80 hover:-translate-y-[1px]"
+                >
+                  Get in touch
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Right – Profile Picture Card */}
+        {/* Right – Desk composition */}
         <div className={`flex justify-center transition-all duration-800 ease-in-out delay-300 ${mounted ? "opacity-100 translate-x-0" : "opacity-0 translate-x-7"}`}>
-          <div className="relative w-full max-w-[420px]">
-            {/* Main Image Card */}
-            <div className="bg-bg-warm p-4 rounded-[2.5rem] border border-[#f0ddc8] shadow-[0_8px_40px_rgba(194,97,26,0.1),0_2px_12px_rgba(0,0,0,0.04)] transform transition-transform duration-500 hover:-translate-y-2">
-              <div className="w-full aspect-[4/5] rounded-[2rem] overflow-hidden bg-[#e8dcc8]">
-                <img 
-                  src={profilePic} 
-                  alt="Sriharan R" 
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
-            </div>
-
-            {/* Floating Details Card */}
-            <div className="absolute -bottom-6 -left-2 md:-left-6 bg-white p-4 rounded-2xl border border-[#f0ddc8] shadow-[0_12px_30px_rgba(194,97,26,0.15)] flex items-center gap-4 animate-float">
-              <div className="w-12 h-12 rounded-full bg-[#fdf4e8] flex items-center justify-center text-[22px]">
-                🚀
-              </div>
-              <div>
-                <div className="text-[13px] font-bold text-text-dark font-dm-mono mb-0.5">Open to Work</div>
-                <div className="text-[11px] text-text-muted">Graduating 2026</div>
-              </div>
-            </div>
-            
-            {/* Floating Badge Right */}
-            <div className="absolute top-10 -right-2 md:-right-6 px-4 py-2.5 bg-accent text-white rounded-full text-[12px] font-semibold font-dm-mono shadow-[0_4px_16px_rgba(194,97,26,0.3)] animate-[float_4s_ease-in-out_infinite_reverse]">
-              AI Builder
-            </div>
-          </div>
+          <DeskIllustration />
         </div>
       </div>
 
