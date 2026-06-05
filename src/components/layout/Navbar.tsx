@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NAV_LINKS } from "../../constants";
+import profilePic from "../../assets/Profile.jpg";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,9 +24,10 @@ export const Navbar = () => {
       <a
         href="#home"
         onClick={(e) => handleNav(e, "#home")}
-        className="font-cormorant text-xl font-bold text-text-dark no-underline tracking-[-0.02em]"
+        className="flex items-center gap-2.5 font-cormorant text-xl font-bold text-text-dark no-underline tracking-[-0.02em] transition-opacity duration-200 hover:opacity-80"
       >
-        SR
+        <img src={profilePic} alt="Sri-Portfolio Logo" className="w-8 h-8 rounded-full object-cover border border-[#f0ddc8] shadow-sm" />
+        Sri-Portfolio
       </a>
 
       {/* Desktop nav */}
