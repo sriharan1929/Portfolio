@@ -65,12 +65,12 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
 };
 
 export const Projects = () => (
-  <section id="projects" className="py-28 px-8 bg-bg-warm">
+  <section id="projects" className="py-20 md:py-28 px-6 md:px-8 bg-bg-warm">
     <div className="max-w-[1100px] mx-auto">
       <FadeIn>
         <SectionHeading label="// selected.projects" title="Work that speaks for itself." />
       </FadeIn>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
         {PROJECTS.map((project, i) => (
           <ProjectCard key={project.id} project={project} index={i} />
         ))}

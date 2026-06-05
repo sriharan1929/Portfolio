@@ -4,9 +4,9 @@ import { SectionLabel } from "../ui/SectionLabel";
 import { CERTIFICATIONS } from "../../constants";
 
 export const About = () => (
-  <section id="about" className="py-28 px-8 bg-bg-warm">
+  <section id="about" className="py-20 md:py-28 px-6 md:px-8 bg-bg-warm">
     <div className="max-w-[1100px] mx-auto">
-      <div className="grid grid-cols-2 gap-20 items-start">
+      <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
         <FadeIn direction="left">
           <SectionHeading label="// about.me" title={"Crafting systems\nwith clarity."} />
           <div className="flex flex-col gap-5">

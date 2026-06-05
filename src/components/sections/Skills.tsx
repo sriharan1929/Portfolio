@@ -4,7 +4,7 @@ import { SkillChip } from "../ui/SkillChip";
 import { SKILLS } from "../../constants";
 
 export const Skills = () => (
-  <section id="skills" className="py-28 px-8 bg-bg-warm-secondary">
+  <section id="skills" className="py-20 md:py-28 px-6 md:px-8 bg-bg-warm-secondary">
     <div className="max-w-[1100px] mx-auto">
       <FadeIn>
         <SectionHeading label="// core.skills" title="The tools in my kit." />

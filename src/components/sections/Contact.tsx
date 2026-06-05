@@ -2,7 +2,7 @@ import { FadeIn } from "../ui/FadeIn";
 import { SectionLabel } from "../ui/SectionLabel";
 
 export const Contact = () => (
-  <section id="contact" className="py-28 px-8 bg-[#1a1410]">
+  <section id="contact" className="py-20 md:py-28 px-6 md:px-8 bg-[#1a1410]">
     <div className="max-w-[800px] mx-auto text-center">
       <FadeIn>
         <SectionLabel><span className="text-[#c2a882]">// let's.connect</span></SectionLabel>
