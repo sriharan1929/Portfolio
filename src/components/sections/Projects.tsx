@@ -1,6 +1,7 @@
 import { FadeIn } from "../ui/FadeIn";
 import { SectionHeading } from "../ui/SectionHeading";
 import { SkillChip } from "../ui/SkillChip";
+import { Button } from "../ui/Button";
 import { PROJECTS } from "../../constants";
 
 const ProjectCard = ({ project, index }: { project: any, index: number }) => {
@@ -49,14 +50,15 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
 
           {/* CTA */}
           <div className="flex gap-2.5 pt-2 border-t border-[#f0ddc8] mt-auto">
-            <a
+            <Button
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-text-dark text-white text-[12px] font-semibold no-underline font-dm-mono tracking-[0.04em] transition-colors duration-200 hover:bg-[#3a2820]"
+              variant="dark"
+              size="sm"
             >
               ↗ GitHub
-            </a>
+            </Button>
           </div>
         </div>
       </div>
@@ -70,7 +72,7 @@ export const Projects = () => (
       <FadeIn>
         <SectionHeading label="// selected.projects" title="Work that speaks for itself." />
       </FadeIn>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {PROJECTS.map((project, i) => (
           <ProjectCard key={project.id} project={project} index={i} />
         ))}

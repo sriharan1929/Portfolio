@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { SectionLabel } from "../ui/SectionLabel";
 import { DeskIllustration } from "./DeskIllustration";
 import profilePic from "../../assets/Profile.jpg";
+import { Button } from "../ui/Button";
 
 export const Hero = () => {
   const [mounted, setMounted] = useState(false);
@@ -21,7 +22,7 @@ export const Hero = () => {
         <div className="w-full">
           <div className={`transition-all duration-700 ease-in-out delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>
             
-            <div className="bg-white/40 backdrop-blur-xl border border-white/60 p-8 md:p-10 rounded-[32px] shadow-[0_8px_32px_rgba(194,97,26,0.05)] relative overflow-hidden">
+            <div className="bg-white/40 backdrop-blur-xl border border-white/60 p-6 md:p-10 rounded-[32px] shadow-[0_8px_32px_rgba(194,97,26,0.05)] relative overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-accent/5 rounded-full blur-3xl -z-10" />
               
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-light border border-accent-border mb-8 relative z-10">
@@ -35,7 +36,7 @@ export const Hero = () => {
                   <div className="absolute -inset-0.5 rounded-full border-[2px] border-[#e8a05a] animate-[spin_10s_linear_infinite] border-dashed"></div>
                   <img src={profilePic} alt="Sriharan R" className="w-24 h-24 rounded-full object-cover border-[3px] border-white shadow-xl relative z-10 group-hover:scale-105 transition-transform duration-300" />
                 </div>
-                <h1 className="font-cormorant text-[clamp(2.8rem,5.5vw,4.2rem)] font-bold text-text-dark leading-[1.08] tracking-[-0.03em]">
+                <h1 className="font-cormorant text-[clamp(2.2rem,5vw,4.2rem)] font-bold text-text-dark leading-[1.08] tracking-[-0.03em]">
                   Sriharan R
                 </h1>
               </div>
@@ -50,22 +51,18 @@ export const Hero = () => {
               </p>
 
               <div className="flex gap-4 flex-wrap relative z-10">
-                <a
+                <Button
                   href="#projects"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-accent text-white font-semibold text-[14px] no-underline tracking-[0.02em] transition-all duration-200 hover:bg-accent-hover hover:-translate-y-[1px] shadow-md hover:shadow-lg"
+                  variant="primary"
                 >
                   View Projects →
-                </a>
-                <a
+                </Button>
+                <Button
                   href="mailto:sriharan8072@gmail.com"
-                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white/50 backdrop-blur-sm text-text-dark font-semibold text-[14px] no-underline tracking-[0.02em] border-[1.5px] border-[#c2a882]/50 transition-all duration-200 hover:border-accent hover:bg-white/80 hover:-translate-y-[1px]"
+                  variant="secondary"
                 >
                   Get in touch
-                </a>
+                </Button>
               </div>
             </div>
           </div>
@@ -73,7 +70,9 @@ export const Hero = () => {
 
         {/* Right – Desk composition */}
         <div className={`flex justify-center transition-all duration-800 ease-in-out delay-300 ${mounted ? "opacity-100 translate-x-0" : "opacity-0 translate-x-7"}`}>
-          <DeskIllustration />
+          <div className="scale-75 sm:scale-90 lg:scale-100 origin-center lg:origin-right w-full flex justify-center">
+            <DeskIllustration />
+          </div>
         </div>
       </div>
 
