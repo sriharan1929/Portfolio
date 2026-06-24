@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface ButtonProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: "primary" | "secondary" | "dark";
