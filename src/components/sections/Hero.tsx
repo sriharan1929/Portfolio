@@ -3,9 +3,12 @@ import { SectionLabel } from "../ui/SectionLabel";
 import { DeskIllustration } from "./DeskIllustration";
 import profilePic from "../../assets/Profile.jpg";
 import { Button } from "../ui/Button";
+import { usePortfolioData } from "../../context/PortfolioDataContext";
 
 export const Hero = () => {
   const [mounted, setMounted] = useState(false);
+  const { profile } = usePortfolioData();
+  
   useEffect(() => { setTimeout(() => setMounted(true), 100); }, []);
 
   return (
@@ -34,20 +37,19 @@ export const Hero = () => {
                 <div className="relative shrink-0 group">
                   <div className="absolute -inset-1.5 rounded-full border border-accent/40 animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
                   <div className="absolute -inset-0.5 rounded-full border-[2px] border-[#e8a05a] animate-[spin_10s_linear_infinite] border-dashed"></div>
-                  <img src={profilePic} alt="Sriharan R" className="w-24 h-24 rounded-full object-cover border-[3px] border-white shadow-xl relative z-10 group-hover:scale-105 transition-transform duration-300" />
+                  <img src={profilePic} alt={profile.name} className="w-24 h-24 rounded-full object-cover border-[3px] border-white shadow-xl relative z-10 group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <h1 className="font-cormorant text-[clamp(2.2rem,5vw,4.2rem)] font-bold text-text-dark leading-[1.08] tracking-[-0.03em]">
-                  Sriharan R
+                  {profile.hero_title}
                 </h1>
               </div>
 
               <p className="font-semibold text-accent font-dm-mono tracking-[0.04em] mb-5 uppercase text-[12px] relative z-10">
-                Full Stack Developer · React · AI · Backend
+                {profile.hero_subtitle}
               </p>
 
               <p className="text-[1.05rem] leading-[1.75] text-text-muted max-w-[460px] mb-10 font-lora relative z-10">
-                Computer Science undergraduate building React, AI-powered systems,
-                and backend-driven products with clarity, structure, and technical depth.
+                {profile.hero_description}
               </p>
 
               <div className="flex gap-4 flex-wrap relative z-10">

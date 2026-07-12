@@ -7,11 +7,12 @@ export const NAV_LINKS = [
 ];
 
 export const SKILLS = {
-  Frontend: ["React.js", "React 19", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
-  Backend: ["FastAPI", "Node.js", "REST APIs", "Authentication", "CRUD", "Python", "Java"],
-  "AI / ML": ["LangChain", "FAISS", "Ollama", "OpenRouter API", "Hugging Face", "Sentence Transformers", "PyMuPDF", "RapidOCR"],
-  "Cloud / DB": ["AWS Lambda", "DynamoDB", "CloudWatch", "Route 53", "MySQL"],
-  Tools: ["Git", "GitHub", "VS Code", "Eclipse IDE", "Browser DevTools"],
+  Languages: ["Java", "JavaScript", "TypeScript", "Python", "SQL"],
+  Frontend: ["React.js", "TypeScript", "HTML5", "CSS3", "Tailwind CSS"],
+  Backend: ["Node.js", "Express.js", "FastAPI", "GraphQL (AppSync)", "REST APIs"],
+  "Cloud / DB": ["AWS", "AWS Lambda", "AppSync", "DynamoDB", "Cognito", "IAM", "CloudWatch", "CloudFront", "MySQL"],
+  Testing: ["Vitest", "Jest", "React Testing Library"],
+  "AI / ML": ["LangChain", "FAISS", "Ollama", "Sentence Transformers"],
 };
 
 export const PROJECTS = [
@@ -19,43 +20,43 @@ export const PROJECTS = [
     id: "zip-rag",
     featured: true,
     title: "ZIP-RAG",
-    tagline: "Offline multi-format RAG system for secure document-grounded Q&A",
-    stack: ["React 19", "FastAPI", "FAISS", "LangChain", "Ollama", "PyMuPDF", "RapidOCR", "Sentence Transformers"],
+    tagline: "Advanced Multi-Format Offline RAG System",
+    stack: ["React", "Python", "FastAPI", "FAISS", "LangChain", "Ollama", "sentence-transformers"],
     features: [
-      "Semantic retrieval pipeline with FAISS + Sentence Transformers",
-      "Local LLM inference via Ollama (Llama 3 / Mistral) — zero cloud dependency",
-      "OCR + PDF parsing workflows for scanned documents",
-      "Full-stack React 19 frontend with FastAPI backend APIs",
+      "Developed a full-stack app with a React frontend and FastAPI backend for real-time document querying.",
+      "Built an offline RAG system enabling accurate, document-grounded question answering without cloud dependency.",
+      "Designed semantic search pipeline using FAISS and Sentence Transformer to retrieve relevant content from large document.",
+      "Ran local LLM inference (Llama 3/Mistral via Ollama) for fully private, offline AI responses.",
     ],
-    period: "Jan 2026 – Apr 2026",
+    period: "Jan 2026 - Apr 2026",
     github: "https://github.com/sriharan8072",
   },
   {
-    id: "study-chatbot",
+    id: "learning-management-system",
     featured: false,
-    title: "My Study Chatbot",
-    tagline: "AI-powered academic assistant with conversational UX and live API integration",
-    stack: ["HTML", "CSS", "JavaScript", "OpenRouter API"],
+    title: "Personal Learning Management System",
+    tagline: "MERN Stack Learning Management System",
+    stack: ["MongoDB", "Express.js", "React.js", "Node.js"],
     features: [
-      "Context-aware responses via OpenRouter API",
-      "Responsive chatbot interface for seamless UX",
-      "Real-time query handling for student learning support",
+      "Developed a full-stack learning management system using the MERN stack to centralize notes, tasks, goals and roadmaps.",
+      "Built responsive React.js components and RESTful APIs to support secure CRUD operations and efficient data.",
+      "Integrated JWT authentication and global search to provide secure access and quick navigation across all modules.",
     ],
-    period: "Jan 2025 – Apr 2025",
+    period: "Feb 2025 - June 2025",
     github: "https://github.com/sriharan8072",
   },
   {
     id: "wholesale",
     featured: false,
-    title: "Online Wholesale Shop",
-    tagline: "Java-based inventory and order management system with MySQL persistence",
+    title: "Online Wholesale Shop Management System",
+    tagline: "Java-based wholesale management application",
     stack: ["Java", "MySQL", "Eclipse IDE"],
     features: [
-      "Full CRUD operations for product and order management",
-      "MySQL-backed data persistence and clean schema design",
-      "Maintainable business logic with structured separation of concerns",
+      "Developed a Java-based wholesale management application for inventory and operational workflows.",
+      "Implemented CRUD operations and MySQL-backed data persistence for product and order management.",
+      "Structured the application for maintainable business logic and clean database interaction.",
     ],
-    period: "Jan 2024 – Apr 2024",
+    period: "Dec 2023 - Apr 2024",
     github: "https://github.com/sriharan8072",
   },
 ];
@@ -65,3 +66,4 @@ export const CERTIFICATIONS = [
   { name: "Java Certification", issuer: "Wipro" },
   { name: "SQL Certification", issuer: "HackerRank" },
 ];
+
