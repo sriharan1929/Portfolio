@@ -2,7 +2,7 @@ import { FadeIn } from "../ui/FadeIn";
 import { SectionHeading } from "../ui/SectionHeading";
 import { SkillChip } from "../ui/SkillChip";
 import { Button } from "../ui/Button";
-import { PROJECTS } from "../../constants";
+import { usePortfolioData } from "../../context/PortfolioDataContext";
 
 const ProjectCard = ({ project, index }: { project: any, index: number }) => {
   const isFeatured = project.featured;
@@ -66,17 +66,21 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
   );
 };
 
-export const Projects = () => (
-  <section id="projects" className="py-20 md:py-28 px-6 md:px-8 bg-bg-warm">
-    <div className="max-w-[1100px] mx-auto">
-      <FadeIn>
-        <SectionHeading label="// selected.projects" title="Work that speaks for itself." />
-      </FadeIn>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {PROJECTS.map((project, i) => (
-          <ProjectCard key={project.id} project={project} index={i} />
-        ))}
+export const Projects = () => {
+  const { projects } = usePortfolioData();
+
+  return (
+    <section id="projects" className="py-20 md:py-28 px-6 md:px-8 bg-bg-warm">
+      <div className="max-w-[1100px] mx-auto">
+        <FadeIn>
+          <SectionHeading label="// selected.projects" title="Work that speaks for itself." />
+        </FadeIn>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, i) => (
+            <ProjectCard key={project.id} project={project} index={i} />
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
