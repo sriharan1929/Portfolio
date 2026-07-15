@@ -3,8 +3,9 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { SkillChip } from "../ui/SkillChip";
 import { Button } from "../ui/Button";
 import { usePortfolioData } from "../../context/PortfolioDataContext";
+import type { Project } from "../../context/PortfolioDataContext";
 
-const ProjectCard = ({ project, index }: { project: any, index: number }) => {
+const ProjectCard = ({ project, index }: { project: Project, index: number }) => {
   const isFeatured = project.featured;
   return (
     <FadeIn delay={index * 100}>
