@@ -862,7 +862,7 @@ const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showToast, sa
   };
 
   // Experience Helpers
-  const handleExpChange = (idx: number, field: keyof Experience, val: any) => {
+  const handleExpChange = (idx: number, field: keyof Experience, val: string | string[] | number) => {
     const list = [...expList];
     list[idx] = { ...list[idx], [field]: val };
     setExpList(list);
