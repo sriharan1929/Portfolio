@@ -2,20 +2,35 @@ import { FadeIn } from "../ui/FadeIn";
 import { SectionHeading } from "../ui/SectionHeading";
 import { SkillChip } from "../ui/SkillChip";
 import { Button } from "../ui/Button";
+import { StarBorder } from "../ui/StarBorder";
 import { usePortfolioData } from "../../context/PortfolioDataContext";
 import type { Project } from "../../types";
 
-const ProjectCard = ({ project, index }: { project: Project, index: number }) => {
+const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
   const isFeatured = project.featured;
   return (
     <FadeIn delay={index * 100}>
-      <div className={`rounded-[20px] bg-bg-warm border-[1.5px] overflow-hidden h-full flex flex-col transition-all duration-250 hover:-translate-y-[3px] ${
-        isFeatured ? "border-[#e8a05a] shadow-[0_4px_24px_rgba(194,97,26,0.12)] hover:shadow-[0_12px_40px_rgba(194,97,26,0.15)]" : "border-[#f0ddc8] shadow-none hover:shadow-none"
-      }`}>
+      <StarBorder
+        as="div"
+        className={`h-full transition-all duration-250 hover:-translate-y-[3px] ${
+          isFeatured
+            ? "shadow-[0_4px_24px_rgba(194,97,26,0.12)] hover:shadow-[0_12px_40px_rgba(194,97,26,0.15)]"
+            : "shadow-none hover:shadow-none"
+        }`}
+        innerClassName="bg-bg-warm h-full flex flex-col"
+        radius="20px"
+        thickness={isFeatured ? 2.5 : 1.5}
+        color={isFeatured ? "var(--color-accent)" : "var(--color-accent-border)"}
+        speed={isFeatured ? "4s" : "6s"}
+      >
         {/* Header */}
-        <div className={`pt-7 px-7 pb-5 border-b border-[#f0ddc8] ${
-          isFeatured ? "bg-gradient-to-br from-[#fde8c8] via-[#fffdf9] to-[#fffdf9] via-[60%]" : "bg-transparent"
-        }`}>
+        <div
+          className={`pt-7 px-7 pb-5 border-b border-[#f0ddc8] w-full ${
+            isFeatured
+              ? "bg-gradient-to-br from-[#fde8c8] via-[#fffdf9] to-[#fffdf9] via-[60%]"
+              : "bg-transparent"
+          }`}
+        >
           <div className="flex justify-between items-start mb-2">
             <h3 className="font-cormorant text-2xl font-bold text-text-dark leading-[1.2] tracking-[-0.01em]">
               {project.title}
@@ -31,7 +46,7 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
         </div>
 
         {/* Body */}
-        <div className="px-7 pt-6 pb-6 flex-1 flex flex-col gap-5">
+        <div className="px-7 pt-6 pb-6 flex-1 flex flex-col gap-5 w-full">
           {/* Stack chips */}
           <div className="flex flex-wrap gap-1.5">
             {project.stack.map((tech: string) => (
@@ -62,7 +77,7 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
             </Button>
           </div>
         </div>
-      </div>
+      </StarBorder>
     </FadeIn>
   );
 };
@@ -85,3 +100,4 @@ export const Projects = () => {
     </section>
   );
 };
+

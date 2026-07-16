@@ -2,6 +2,7 @@ import { FadeIn } from "../ui/FadeIn";
 import { SectionHeading } from "../ui/SectionHeading";
 import { SkillChip } from "../ui/SkillChip";
 import { Section } from "../ui/Section";
+import { StarBorder } from "../ui/StarBorder";
 import { usePortfolioData } from "../../context/PortfolioDataContext";
 
 export const Experience = () => {
@@ -15,8 +16,15 @@ export const Experience = () => {
       <div className="flex flex-col gap-8">
         {experience.map((exp, idx) => (
           <FadeIn key={exp.id || idx} delay={idx * 100}>
-            <div className="p-6 md:p-10 rounded-2xl md:rounded-3xl bg-bg-warm border border-[#f0ddc8] max-w-[780px] shadow-[0_2px_16px_rgba(194,97,26,0.07)]">
-              <div className="flex justify-between items-start flex-wrap gap-4 mb-6">
+            <StarBorder
+              as="div"
+              className="max-w-[780px] shadow-[0_2px_16px_rgba(194,97,26,0.07)]"
+              innerClassName="p-6 md:p-10 bg-bg-warm flex flex-col"
+              radius="24px"
+              thickness={1.5}
+              color="var(--color-accent-border)"
+            >
+              <div className="flex justify-between items-start flex-wrap gap-4 mb-6 w-full">
                 <div className="flex-1">
                   <div className="font-cormorant text-[1.6rem] font-bold text-text-dark leading-[1.2]">
                     {exp.title}
@@ -35,7 +43,7 @@ export const Experience = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2.5 w-full">
                 {exp.points.map((item, i) => (
                   <div key={i} className="flex gap-3 items-start">
                     <div className="w-1.5 h-1.5 rounded-full bg-accent mt-[7px] shrink-0" />
@@ -45,16 +53,17 @@ export const Experience = () => {
               </div>
 
               {exp.tags && exp.tags.length > 0 && (
-                <div className="mt-6 pt-5 border-t border-[#f0ddc8] flex gap-2 flex-wrap">
+                <div className="mt-6 pt-5 border-t border-[#f0ddc8] flex gap-2 flex-wrap w-full">
                   {exp.tags.map((tag) => (
                     <SkillChip key={tag} label={tag} />
                   ))}
                 </div>
               )}
-            </div>
+            </StarBorder>
           </FadeIn>
         ))}
       </div>
     </Section>
   );
 };
+
