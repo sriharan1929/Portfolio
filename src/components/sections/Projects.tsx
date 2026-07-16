@@ -3,7 +3,7 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { SkillChip } from "../ui/SkillChip";
 import { Button } from "../ui/Button";
 import { usePortfolioData } from "../../context/PortfolioDataContext";
-import type { Project } from "../../context/PortfolioDataContext";
+import type { Project } from "../../types";
 
 const ProjectCard = ({ project, index }: { project: Project, index: number }) => {
   const isFeatured = project.featured;

@@ -36,9 +36,10 @@ export const AdminLogin = () => {
 
       if (error) throw error;
       navigate("/admin");
-    } catch (err: any) {
-      console.error("Login error:", err);
-      setErrorMsg(err.message || "Invalid login credentials. Please try again.");
+    } catch (err) {
+      const error = err as Error;
+      console.error("Login error:", error);
+      setErrorMsg(error.message || "Invalid login credentials. Please try again.");
     } finally {
       setLoading(false);
     }
