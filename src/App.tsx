@@ -10,6 +10,7 @@ import { Experience } from "./components/sections/Experience";
 import { Contact } from "./components/sections/Contact";
 import { AdminLogin } from "./components/admin/AdminLogin";
 import { AdminPanel } from "./components/admin/AdminPanel";
+import { DotGrid } from "./components/ui/DotGrid";
 
 import "./index.css";
 
@@ -59,6 +60,17 @@ function Router() {
 
   return (
     <>
+      <div className="fixed inset-0 pointer-events-none -z-10 opacity-30">
+        <DotGrid
+          dotSize={2.5}
+          gap={26}
+          baseColor="#e5d1b8"
+          activeColor="#c2611a"
+          proximity={180}
+          shockRadius={280}
+          shockStrength={5.5}
+        />
+      </div>
       <Navbar />
       <main>
         <Hero />
