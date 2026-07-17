@@ -10,7 +10,7 @@ export const About = () => {
   const { profile, education } = usePortfolioData();
 
   return (
-    <Section id="about" className="bg-bg-warm">
+    <Section id="about" className="bg-transparent">
       <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
         <FadeIn direction="left">
           <SectionHeading label="// about.me" title={"Crafting systems\nwith clarity."} />

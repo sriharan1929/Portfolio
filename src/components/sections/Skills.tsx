@@ -9,7 +9,7 @@ export const Skills = () => {
   const { skills } = usePortfolioData();
 
   return (
-    <Section id="skills" className="bg-bg-warm-secondary">
+    <Section id="skills" className="bg-bg-warm-secondary/30">
       <FadeIn>
         <SectionHeading label="// core.skills" title="The tools in my kit." />
       </FadeIn>

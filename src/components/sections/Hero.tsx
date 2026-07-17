@@ -14,7 +14,7 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center px-6 md:px-8 lg:px-12 relative overflow-hidden bg-gradient-to-br from-[#fffdf9] via-[#fffdf9] to-[#fdf0e0] from-[60%]"
+      className="min-h-screen flex items-center px-6 md:px-8 lg:px-12 relative overflow-hidden bg-gradient-to-br from-[#fffdf9]/30 via-[#fffdf9]/50 to-[#fdf0e0]/70 from-[60%]"
     >
       {/* Background orbs */}
       <div className="absolute top-[10%] right-[8%] w-[420px] h-[420px] rounded-full bg-[radial-gradient(circle,rgba(237,160,80,0.12)_0%,transparent_70%)] pointer-events-none" />

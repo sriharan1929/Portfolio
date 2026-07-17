@@ -9,7 +9,7 @@ export const Experience = () => {
   const { experience } = usePortfolioData();
 
   return (
-    <Section id="experience" className="bg-bg-warm-secondary">
+    <Section id="experience" className="bg-bg-warm-secondary/30">
       <FadeIn>
         <SectionHeading label="// work.experience" title="Hands-on in the field." />
       </FadeIn>
