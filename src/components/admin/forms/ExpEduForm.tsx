@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import type { Experience, Education } from "../../../types";
 import { Button } from "../../ui/Button";
+import { Input } from "../../ui/Input";
+import { Textarea } from "../../ui/Textarea";
+import { FormLabel } from "../../ui/FormLabel";
+import { FormCard } from "../../ui/FormCard";
 
 interface ExpEduFormProps {
   experience: Experience[];
@@ -97,10 +101,10 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
   };
 
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 w-full">
       {/* EXPERIENCE SECTION */}
-      <div className="flex flex-col gap-6">
-        <div className="flex justify-between items-start flex-wrap gap-4">
+      <div className="flex flex-col gap-6 w-full">
+        <div className="flex justify-between items-start flex-wrap gap-4 w-full">
           <div>
             <h2 className="font-cormorant text-2xl font-bold mb-1">Work Experience</h2>
             <p className="text-xs text-text-muted font-lora">Manage your professional job roles and internships.</p>
@@ -115,11 +119,13 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
           </Button>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 w-full">
           {expList.map((exp, expIdx) => (
-            <div key={exp.id || expIdx} className="bg-white border border-[#f0ddc8] rounded-[24px] p-6 md:p-8 flex flex-col gap-4 shadow-[0_2px_12px_rgba(194,97,26,0.02)]">
-              <div className="flex justify-between items-center pb-2 border-b border-[#f0ddc8]">
-                <span className="font-dm-mono text-[11px] font-semibold text-accent">JOB POSITION #{expIdx + 1}</span>
+            <FormCard
+              key={exp.id || expIdx}
+              className="gap-4"
+              title={`JOB POSITION #${expIdx + 1}`}
+              headerRight={
                 <button
                   type="button"
                   onClick={() => removeExp(expIdx)}
@@ -127,61 +133,61 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
                 >
                   Delete Job 🗑
                 </button>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              }
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-bold text-text-light font-dm-mono uppercase">Role Title</label>
-                  <input
+                  <FormLabel className="text-[10px]">Role Title</FormLabel>
+                  <Input
                     type="text"
                     value={exp.title}
                     onChange={(e) => handleExpChange(expIdx, "title", e.target.value)}
                     placeholder="e.g. Full Time Intern"
-                    className="px-4 py-2 border border-[#f0ddc8] rounded-xl text-xs text-text-dark"
+                    inputSize="sm"
                     required
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-bold text-text-light font-dm-mono uppercase">Company / Employer</label>
-                  <input
+                  <FormLabel className="text-[10px]">Company / Employer</FormLabel>
+                  <Input
                     type="text"
                     value={exp.company}
                     onChange={(e) => handleExpChange(expIdx, "company", e.target.value)}
                     placeholder="e.g. Syzy Technologies"
-                    className="px-4 py-2 border border-[#f0ddc8] rounded-xl text-xs text-text-dark"
+                    inputSize="sm"
                     required
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-bold text-text-light font-dm-mono uppercase">Project Name (Optional)</label>
-                  <input
+                  <FormLabel className="text-[10px]">Project Name (Optional)</FormLabel>
+                  <Input
                     type="text"
                     value={exp.project_name}
                     onChange={(e) => handleExpChange(expIdx, "project_name", e.target.value)}
                     placeholder="e.g. FlowFlux CRM"
-                    className="px-4 py-2 border border-[#f0ddc8] rounded-xl text-xs text-text-dark"
+                    inputSize="sm"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-bold text-text-light font-dm-mono uppercase">Timeline Period</label>
-                  <input
+                  <FormLabel className="text-[10px]">Timeline Period</FormLabel>
+                  <Input
                     type="text"
                     value={exp.period}
                     onChange={(e) => handleExpChange(expIdx, "period", e.target.value)}
                     placeholder="e.g. Jan 2026 – Present"
-                    className="px-4 py-2 border border-[#f0ddc8] rounded-xl text-xs text-text-dark"
+                    inputSize="sm"
                     required
                   />
                 </div>
               </div>
 
               {/* Points */}
-              <div className="flex flex-col gap-3 mt-3">
-                <div className="flex justify-between items-center">
-                  <label className="text-[10px] font-bold text-text-light font-dm-mono uppercase">Job Accomplishments</label>
+              <div className="flex flex-col gap-3 mt-3 w-full">
+                <div className="flex justify-between items-center w-full">
+                  <FormLabel className="text-[10px]">Job Accomplishments</FormLabel>
                   <button
                     type="button"
                     onClick={() => addExpArrayItem(expIdx, "points")}
@@ -191,11 +197,13 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
                   </button>
                 </div>
                 {exp.points.map((pt, ptIdx) => (
-                  <div key={ptIdx} className="flex gap-2 items-start">
-                    <textarea
+                  <div key={ptIdx} className="flex gap-2 items-start w-full">
+                    <Textarea
                       value={pt}
                       onChange={(e) => handleExpArrayChange(expIdx, "points", ptIdx, e.target.value)}
-                      className="flex-1 px-4 py-2 border border-[#f0ddc8] rounded-xl text-xs bg-[#faf8f5] text-text-dark leading-relaxed"
+                      variant="nested"
+                      inputSize="sm"
+                      className="flex-1"
                       rows={2}
                       required
                     />
@@ -211,9 +219,9 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
               </div>
 
               {/* Tags */}
-              <div className="flex flex-col gap-3 mt-3">
-                <div className="flex justify-between items-center">
-                  <label className="text-[10px] font-bold text-text-light font-dm-mono uppercase">Technologies Used</label>
+              <div className="flex flex-col gap-3 mt-3 w-full">
+                <div className="flex justify-between items-center w-full">
+                  <FormLabel className="text-[10px]">Technologies Used</FormLabel>
                   <button
                     type="button"
                     onClick={() => addExpArrayItem(expIdx, "tags")}
@@ -222,7 +230,7 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
                     + Add Tech Tag
                   </button>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 w-full">
                   {exp.tags.map((tag, tagIdx) => (
                     <div key={tagIdx} className="flex gap-1 items-center bg-[#faf8f5] border border-[#f0ddc8] rounded-lg px-2 py-1">
                       <input
@@ -243,7 +251,7 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
                   ))}
                 </div>
               </div>
-            </div>
+            </FormCard>
           ))}
         </div>
 
@@ -260,8 +268,8 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
       </div>
 
       {/* EDUCATION SECTION */}
-      <div className="flex flex-col gap-6 pt-8 border-t border-[#f0ddc8]">
-        <div className="flex justify-between items-start flex-wrap gap-4">
+      <div className="flex flex-col gap-6 pt-8 border-t border-[#f0ddc8] w-full">
+        <div className="flex justify-between items-start flex-wrap gap-4 w-full">
           <div>
             <h2 className="font-cormorant text-2xl font-bold mb-1">Education Milestones</h2>
             <p className="text-xs text-text-muted font-lora">Publish and maintain your academic credentials.</p>
@@ -276,11 +284,12 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
           </Button>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 w-full">
           {eduList.map((edu, eduIdx) => (
-            <div key={edu.id || eduIdx} className="bg-white border border-[#f0ddc8] rounded-[24px] p-6 shadow-[0_2px_12px_rgba(194,97,26,0.02)] flex flex-col gap-4">
-              <div className="flex justify-between items-center pb-2 border-b border-[#f0ddc8]">
-                <span className="font-dm-mono text-[10px] font-semibold text-accent">SCHOOL ITEM #{eduIdx + 1}</span>
+            <FormCard
+              key={edu.id || eduIdx}
+              title={`SCHOOL ITEM #${eduIdx + 1}`}
+              headerRight={
                 <button
                   type="button"
                   onClick={() => removeEdu(eduIdx)}
@@ -288,58 +297,58 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
                 >
                   Delete Item 🗑
                 </button>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              }
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-bold text-text-light font-dm-mono uppercase">Degree / Qualification</label>
-                  <input
+                  <FormLabel className="text-[10px]">Degree / Qualification</FormLabel>
+                  <Input
                     type="text"
                     value={edu.degree}
                     onChange={(e) => handleEduChange(eduIdx, "degree", e.target.value)}
                     placeholder="e.g. B.E. Computer Science"
-                    className="px-4 py-2 border border-[#f0ddc8] rounded-xl text-xs text-text-dark"
+                    inputSize="sm"
                     required
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-bold text-text-light font-dm-mono uppercase">Institution & Location</label>
-                  <input
+                  <FormLabel className="text-[10px]">Institution & Location</FormLabel>
+                  <Input
                     type="text"
                     value={edu.place}
                     onChange={(e) => handleEduChange(eduIdx, "place", e.target.value)}
                     placeholder="e.g. Sona College of Technology, Salem"
-                    className="px-4 py-2 border border-[#f0ddc8] rounded-xl text-xs text-text-dark"
+                    inputSize="sm"
                     required
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-bold text-text-light font-dm-mono uppercase">Year / Timeline</label>
-                  <input
+                  <FormLabel className="text-[10px]">Year / Timeline</FormLabel>
+                  <Input
                     type="text"
                     value={edu.year}
                     onChange={(e) => handleEduChange(eduIdx, "year", e.target.value)}
                     placeholder="e.g. 2026"
-                    className="px-4 py-2 border border-[#f0ddc8] rounded-xl text-xs text-text-dark"
+                    inputSize="sm"
                     required
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-bold text-text-light font-dm-mono uppercase">Score / Grade</label>
-                  <input
+                  <FormLabel className="text-[10px]">Score / Grade</FormLabel>
+                  <Input
                     type="text"
                     value={edu.score}
                     onChange={(e) => handleEduChange(eduIdx, "score", e.target.value)}
                     placeholder="e.g. CGPA: 7.98/10 or 90.5%"
-                    className="px-4 py-2 border border-[#f0ddc8] rounded-xl text-xs text-text-dark"
+                    inputSize="sm"
                     required
                   />
                 </div>
               </div>
-            </div>
+            </FormCard>
           ))}
         </div>
 

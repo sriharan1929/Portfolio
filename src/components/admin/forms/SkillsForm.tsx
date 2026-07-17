@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "../../ui/Button";
+import { Input } from "../../ui/Input";
+import { FormCard } from "../../ui/FormCard";
 
 interface SkillsFormProps {
   skills: Record<string, string[]>;
@@ -56,18 +58,19 @@ export const SkillsForm = ({ skills, onSave, showToast, saving }: SkillsFormProp
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-      <div className="flex justify-between items-start flex-wrap gap-4">
+      <div className="flex justify-between items-start flex-wrap gap-4 w-full">
         <div>
           <h2 className="font-cormorant text-2xl font-bold mb-1">Skills Inventory</h2>
           <p className="text-xs text-text-muted font-lora">Organize and publish technical skill pills by categories.</p>
         </div>
         <div className="flex gap-2">
-          <input
+          <Input
             type="text"
             placeholder="New Category (e.g. Databases)"
             value={newCatName}
             onChange={(e) => setNewCatName(e.target.value)}
-            className="px-4 py-2 rounded-xl border border-[#f0ddc8] text-xs outline-none bg-white focus:border-accent text-text-dark"
+            inputSize="sm"
+            className="w-auto bg-white"
           />
           <Button
             type="button"
@@ -80,11 +83,12 @@ export const SkillsForm = ({ skills, onSave, showToast, saving }: SkillsFormProp
         </div>
       </div>
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 w-full">
         {Object.entries(skillsState).map(([category, list]) => (
-          <div key={category} className="bg-white border border-[#f0ddc8] rounded-[24px] p-6 shadow-[0_2px_12px_rgba(194,97,26,0.02)]">
-            <div className="flex justify-between items-center mb-5 pb-2 border-b border-[#f0ddc8]">
-              <span className="text-[12px] font-bold tracking-[0.1em] uppercase text-accent font-dm-mono">{category}</span>
+          <FormCard
+            key={category}
+            title={category}
+            headerRight={
               <button
                 type="button"
                 onClick={() => handleRemoveCategory(category)}
@@ -92,17 +96,19 @@ export const SkillsForm = ({ skills, onSave, showToast, saving }: SkillsFormProp
               >
                 Delete Category 🗑
               </button>
-            </div>
-
-            <div className="flex flex-col gap-3">
+            }
+          >
+            <div className="flex flex-col gap-3 w-full">
               {list.map((skill, index) => (
-                <div key={index} className="flex gap-3 items-center">
-                  <input
+                <div key={index} className="flex gap-3 items-center w-full">
+                  <Input
                     type="text"
                     value={skill}
                     onChange={(e) => handleSkillChange(category, index, e.target.value)}
                     placeholder="Skill name (e.g. React.js)"
-                    className="flex-1 px-4 py-2 rounded-xl border border-[#f0ddc8] text-xs outline-none focus:border-accent bg-[#faf8f5] text-text-dark"
+                    variant="nested"
+                    inputSize="sm"
+                    className="flex-1"
                     required
                   />
                   <button
@@ -123,7 +129,7 @@ export const SkillsForm = ({ skills, onSave, showToast, saving }: SkillsFormProp
                 + Add Skill
               </button>
             </div>
-          </div>
+          </FormCard>
         ))}
       </div>
 
@@ -139,3 +145,4 @@ export const SkillsForm = ({ skills, onSave, showToast, saving }: SkillsFormProp
     </form>
   );
 };
+

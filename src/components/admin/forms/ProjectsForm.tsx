@@ -1,6 +1,10 @@
 import { useState } from "react";
 import type { Project } from "../../../types";
 import { Button } from "../../ui/Button";
+import { Input } from "../../ui/Input";
+import { Textarea } from "../../ui/Textarea";
+import { FormLabel } from "../../ui/FormLabel";
+import { FormCard } from "../../ui/FormCard";
 
 interface ProjectsFormProps {
   projects: Project[];
@@ -13,7 +17,7 @@ interface ProjectsFormProps {
 
 export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, saving }: ProjectsFormProps) => {
   const [editingId, setEditingId] = useState<string | null>(null);
-  
+
   // Single Project state
   const [projForm, setProjForm] = useState<Project | Omit<Project, "sort_order">>({
     id: "",
@@ -94,7 +98,7 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
   if (editingId) {
     return (
       <form onSubmit={handleFormSubmit} className="flex flex-col gap-6">
-        <div className="flex justify-between items-center pb-3 border-b border-[#f0ddc8]">
+        <div className="flex justify-between items-center pb-3 border-b border-[#f0ddc8] w-full">
           <h2 className="font-cormorant text-2xl font-bold">
             {editingId === "new" ? "Add New Project" : `Edit Project: ${projForm.title}`}
           </h2>
@@ -107,63 +111,58 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
           </button>
         </div>
 
-        <div className="bg-white border border-[#f0ddc8] rounded-[24px] p-6 md:p-8 flex flex-col gap-5 shadow-[0_2px_12px_rgba(194,97,26,0.02)]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <FormCard>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
             <div className="flex flex-col gap-2">
-              <label className="text-[11px] font-bold tracking-[0.05em] uppercase text-text-light font-dm-mono">Project ID</label>
-              <input
+              <FormLabel>Project ID</FormLabel>
+              <Input
                 type="text"
                 placeholder="e.g. zip-rag"
                 disabled={editingId !== "new"}
                 value={projForm.id}
                 onChange={(e) => setProjForm({ ...projForm, id: e.target.value.toLowerCase().replace(/[^a-z0-9-]+/g, "") })}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#f0ddc8] text-sm focus:border-accent outline-none text-text-dark disabled:bg-[#faf8f5] disabled:cursor-not-allowed"
                 required
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-[11px] font-bold tracking-[0.05em] uppercase text-text-light font-dm-mono">Project Title</label>
-              <input
+              <FormLabel>Project Title</FormLabel>
+              <Input
                 type="text"
                 placeholder="e.g. ZIP-RAG"
                 value={projForm.title}
                 onChange={(e) => setProjForm({ ...projForm, title: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#f0ddc8] text-sm focus:border-accent outline-none text-text-dark"
                 required
               />
             </div>
 
             <div className="flex flex-col gap-2 md:col-span-2">
-              <label className="text-[11px] font-bold tracking-[0.05em] uppercase text-text-light font-dm-mono">Project Tagline</label>
-              <input
+              <FormLabel>Project Tagline</FormLabel>
+              <Input
                 type="text"
                 value={projForm.tagline}
                 onChange={(e) => setProjForm({ ...projForm, tagline: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#f0ddc8] text-sm focus:border-accent outline-none text-text-dark"
                 required
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-[11px] font-bold tracking-[0.05em] uppercase text-text-light font-dm-mono">Timeline / Period</label>
-              <input
+              <FormLabel>Timeline / Period</FormLabel>
+              <Input
                 type="text"
                 placeholder="Jan 2026 - Apr 2026"
                 value={projForm.period}
                 onChange={(e) => setProjForm({ ...projForm, period: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#f0ddc8] text-sm focus:border-accent outline-none text-text-dark"
                 required
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-[11px] font-bold tracking-[0.05em] uppercase text-text-light font-dm-mono">GitHub Repository URL</label>
-              <input
+              <FormLabel>GitHub Repository URL</FormLabel>
+              <Input
                 type="url"
                 value={projForm.github}
                 onChange={(e) => setProjForm({ ...projForm, github: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#f0ddc8] text-sm focus:border-accent outline-none text-text-dark"
                 required
               />
             </div>
@@ -181,12 +180,12 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
               </label>
             </div>
           </div>
-        </div>
+        </FormCard>
 
         {/* Tech Stack List */}
-        <div className="bg-white border border-[#f0ddc8] rounded-[24px] p-6 md:p-8 flex flex-col gap-4 shadow-[0_2px_12px_rgba(194,97,26,0.02)]">
-          <h3 className="text-[12px] font-bold tracking-[0.1em] uppercase text-accent font-dm-mono pb-2 border-b border-[#f0ddc8] flex justify-between items-center">
-            Tech Stack Tags
+        <FormCard
+          title="Tech Stack Tags"
+          headerRight={
             <button
               type="button"
               onClick={() => addArrayItem("stack")}
@@ -194,16 +193,19 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
             >
               + Add Tech Tag
             </button>
-          </h3>
-          <div className="flex flex-col gap-2.5">
+          }
+        >
+          <div className="flex flex-col gap-2.5 w-full">
             {projForm.stack.map((tech, idx) => (
-              <div key={idx} className="flex gap-2 items-center">
-                <input
+              <div key={idx} className="flex gap-2 items-center w-full">
+                <Input
                   type="text"
                   value={tech}
                   onChange={(e) => handleArrayStringChange("stack", idx, e.target.value)}
                   placeholder="e.g. React"
-                  className="flex-1 px-4 py-2 border border-[#f0ddc8] rounded-xl text-xs bg-[#faf8f5] text-text-dark"
+                  variant="nested"
+                  inputSize="sm"
+                  className="flex-1"
                   required
                 />
                 <button
@@ -216,12 +218,12 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
               </div>
             ))}
           </div>
-        </div>
+        </FormCard>
 
         {/* Feature Points */}
-        <div className="bg-white border border-[#f0ddc8] rounded-[24px] p-6 md:p-8 flex flex-col gap-4 shadow-[0_2px_12px_rgba(194,97,26,0.02)]">
-          <h3 className="text-[12px] font-bold tracking-[0.1em] uppercase text-accent font-dm-mono pb-2 border-b border-[#f0ddc8] flex justify-between items-center">
-            Key Project Features / Accomplishments
+        <FormCard
+          title="Key Project Features / Accomplishments"
+          headerRight={
             <button
               type="button"
               onClick={() => addArrayItem("features")}
@@ -229,15 +231,18 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
             >
               + Add Feature Point
             </button>
-          </h3>
-          <div className="flex flex-col gap-2.5">
+          }
+        >
+          <div className="flex flex-col gap-2.5 w-full">
             {projForm.features.map((feat, idx) => (
-              <div key={idx} className="flex gap-2 items-start">
-                <textarea
+              <div key={idx} className="flex gap-2 items-start w-full">
+                <Textarea
                   value={feat}
                   onChange={(e) => handleArrayStringChange("features", idx, e.target.value)}
                   placeholder="Describe an accomplishment or architecture detail..."
-                  className="flex-1 px-4 py-2 border border-[#f0ddc8] rounded-xl text-xs bg-[#faf8f5] leading-relaxed text-text-dark"
+                  variant="nested"
+                  inputSize="sm"
+                  className="flex-1"
                   rows={2}
                   required
                 />
@@ -251,9 +256,9 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
               </div>
             ))}
           </div>
-        </div>
+        </FormCard>
 
-        <div className="flex gap-3">
+        <div className="flex gap-3 w-full">
           <Button
             type="submit"
             disabled={saving}
@@ -278,8 +283,8 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
   }
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex justify-between items-start flex-wrap gap-4">
+    <div className="flex flex-col gap-8 w-full">
+      <div className="flex justify-between items-start flex-wrap gap-4 w-full">
         <div>
           <h2 className="font-cormorant text-2xl font-bold mb-1">Projects List</h2>
           <p className="text-xs text-text-muted font-lora">Publish and maintain details of your developer projects.</p>
@@ -294,9 +299,9 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
         </Button>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 w-full">
         {projects.map((proj) => (
-          <div key={proj.id} className="bg-white border border-[#f0ddc8] rounded-[20px] p-6 flex justify-between items-center shadow-[0_2px_12px_rgba(194,97,26,0.02)]">
+          <div key={proj.id} className="bg-white border border-[#f0ddc8] rounded-[20px] p-6 flex justify-between items-center shadow-[0_2px_12px_rgba(194,97,26,0.02)] w-full">
             <div className="flex-1">
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold text-[15px]">{proj.title}</h3>
