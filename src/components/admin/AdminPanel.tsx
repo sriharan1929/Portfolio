@@ -6,6 +6,7 @@ import { ProfileForm } from "./forms/ProfileForm";
 import { SkillsForm } from "./forms/SkillsForm";
 import { ProjectsForm } from "./forms/ProjectsForm";
 import { ExpEduForm } from "./forms/ExpEduForm";
+import { Briefcase, User, Zap, Code2, GraduationCap } from "lucide-react";
 
 type Tab = "profile" | "skills" | "projects" | "experience";
 
@@ -72,8 +73,8 @@ export const AdminPanel = () => {
       {/* Header */}
       <header className="h-20 bg-white border-b border-[#f0ddc8] px-6 md:px-12 flex justify-between items-center shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center text-white font-bold text-sm shadow-md">
-            💼
+          <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center text-white shadow-md">
+            <Briefcase size={16} />
           </div>
           <div>
             <h1 className="font-cormorant text-xl font-bold tracking-[-0.01em]">Sri-Portfolio Admin</h1>
@@ -107,10 +108,10 @@ export const AdminPanel = () => {
         {/* Sidebar Nav */}
         <aside className="w-full md:w-64 bg-white border-b md:border-b-0 md:border-r border-[#f0ddc8] p-4 flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-x-visible">
           {[
-            { id: "profile", label: "Profile & Hero", icon: "👤" },
-            { id: "skills", label: "Skills Inventory", icon: "⚡" },
-            { id: "projects", label: "Projects List", icon: "💻" },
-            { id: "experience", label: "Job & School", icon: "🎓" }
+            { id: "profile", label: "Profile & Hero", icon: <User size={16} /> },
+            { id: "skills", label: "Skills Inventory", icon: <Zap size={16} /> },
+            { id: "projects", label: "Projects List", icon: <Code2 size={16} /> },
+            { id: "experience", label: "Job & School", icon: <GraduationCap size={16} /> }
           ].map((tab) => (
             <button
               key={tab.id}

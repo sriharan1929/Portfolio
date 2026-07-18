@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "../../ui/Button";
 import { Input } from "../../ui/Input";
 import { FormCard } from "../../ui/FormCard";
+import { Trash2 } from "lucide-react";
 
 interface SkillsFormProps {
   skills: Record<string, string[]>;
@@ -92,9 +93,9 @@ export const SkillsForm = ({ skills, onSave, showToast, saving }: SkillsFormProp
               <button
                 type="button"
                 onClick={() => handleRemoveCategory(category)}
-                className="text-[10px] text-red-500 font-dm-mono hover:underline cursor-pointer bg-transparent border-none outline-none"
+                className="text-[10px] text-red-500 font-dm-mono hover:underline cursor-pointer bg-transparent border-none outline-none flex items-center gap-1"
               >
-                Delete Category 🗑
+                Delete Category <Trash2 size={11} />
               </button>
             }
           >

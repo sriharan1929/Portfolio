@@ -5,6 +5,7 @@ import { Input } from "../../ui/Input";
 import { Textarea } from "../../ui/Textarea";
 import { FormLabel } from "../../ui/FormLabel";
 import { FormCard } from "../../ui/FormCard";
+import { Trash2 } from "lucide-react";
 
 interface ExpEduFormProps {
   experience: Experience[];
@@ -129,9 +130,9 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
                 <button
                   type="button"
                   onClick={() => removeExp(expIdx)}
-                  className="text-red-500 hover:underline text-[10px] font-dm-mono cursor-pointer bg-transparent border-none outline-none"
+                  className="text-red-500 hover:underline text-[10px] font-dm-mono cursor-pointer bg-transparent border-none outline-none flex items-center gap-1"
                 >
-                  Delete Job 🗑
+                  Delete Job <Trash2 size={11} />
                 </button>
               }
             >
@@ -293,9 +294,9 @@ export const ExpEduForm = ({ experience, education, onSaveExp, onSaveEdu, showTo
                 <button
                   type="button"
                   onClick={() => removeEdu(eduIdx)}
-                  className="text-red-500 hover:underline text-[10px] font-dm-mono cursor-pointer bg-transparent border-none outline-none"
+                  className="text-red-500 hover:underline text-[10px] font-dm-mono cursor-pointer bg-transparent border-none outline-none flex items-center gap-1"
                 >
-                  Delete Item 🗑
+                  Delete Item <Trash2 size={11} />
                 </button>
               }
             >

@@ -5,6 +5,7 @@ import { Input } from "../../ui/Input";
 import { Textarea } from "../../ui/Textarea";
 import { FormLabel } from "../../ui/FormLabel";
 import { FormCard } from "../../ui/FormCard";
+import { Trash2 } from "lucide-react";
 
 interface ProfileFormProps {
   profile: Profile;
@@ -161,9 +162,9 @@ export const ProfileForm = ({ profile, onSave, showToast, saving }: ProfileFormP
             <button
               type="button"
               onClick={() => removeParagraph(i)}
-              className="p-2 border border-red-200 hover:bg-red-50 text-red-500 rounded-lg text-xs mt-1 transition-colors cursor-pointer bg-transparent outline-none"
+              className="p-2 border border-red-200 hover:bg-red-50 text-red-500 rounded-lg text-xs mt-1 transition-colors cursor-pointer bg-transparent outline-none flex items-center justify-center"
             >
-              🗑
+              <Trash2 size={14} />
             </button>
           </div>
         ))}

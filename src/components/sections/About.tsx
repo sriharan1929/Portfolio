@@ -3,6 +3,7 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { SectionLabel } from "../ui/SectionLabel";
 import { Section } from "../ui/Section";
 import { StarBorder } from "../ui/StarBorder";
+import { Trophy } from "lucide-react";
 import { CERTIFICATIONS } from "../../constants";
 import { usePortfolioData } from "../../context/PortfolioDataContext";
 
@@ -81,7 +82,7 @@ export const About = () => {
               thickness={1.5}
               color="var(--color-accent)"
             >
-              <span className="text-[28px]">🏆</span>
+              <Trophy size={28} className="text-[#a84e15]" />
               <div>
                 <div className="text-[13px] font-semibold text-[#7a3c10]">Volant'24 — 2nd Prize</div>
                 <div className="text-[12px] text-[#b06830] mt-0.5">Innovative technical solution presentation</div>
