@@ -16,12 +16,12 @@ export const FormCard = ({
 }: FormCardProps) => {
   return (
     <div
-      className={`bg-white border border-[#f0ddc8] rounded-[24px] p-6 md:p-8 flex flex-col gap-6 shadow-[0_2px_12px_rgba(194,97,26,0.02)] ${className}`}
+      className={`admin-card-panel rounded-[24px] md:p-8 flex flex-col gap-6 ${className}`}
       {...props}
     >
       {title && (
-        <div className="flex justify-between items-center pb-2 border-b border-[#f0ddc8] w-full">
-          <h3 className="text-[12px] font-bold tracking-[0.1em] uppercase text-accent font-dm-mono">
+        <div className="divider-b flex justify-between items-center pb-2 w-full">
+          <h3 className="mono-tag text-[12px]">
             {title}
           </h3>
           {headerRight}

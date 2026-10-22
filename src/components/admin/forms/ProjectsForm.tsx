@@ -27,12 +27,13 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
     features: [],
     period: "",
     github: "",
+    live: "",
     featured: false
   });
 
   const handleEditClick = (p: Project) => {
     setEditingId(p.id);
-    setProjForm({ ...p });
+    setProjForm({ ...p, live: p.live || "" });
   };
 
   const handleAddClick = () => {
@@ -45,6 +46,7 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
       features: [],
       period: "",
       github: "",
+      live: "",
       featured: false
     });
   };
@@ -55,16 +57,20 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const cleanProj = {
+      ...projForm,
+      live: projForm.live?.trim() ? projForm.live.trim() : undefined
+    };
     if (editingId === "new") {
       // Setup random text ID if empty
       const generatedId = projForm.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-      const success = await onAdd({ ...projForm, id: projForm.id || generatedId } as Project);
+      const success = await onAdd({ ...cleanProj, id: projForm.id || generatedId } as Project);
       if (success) {
         showToast("New project added");
         setEditingId(null);
       }
     } else if (editingId) {
-      const success = await onSave(projForm as Project);
+      const success = await onSave(cleanProj as Project);
       if (success) {
         showToast("Project details updated");
         setEditingId(null);
@@ -167,6 +173,16 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
               />
             </div>
 
+            <div className="flex flex-col gap-2">
+              <FormLabel>Live Demo URL (Optional)</FormLabel>
+              <Input
+                type="url"
+                placeholder="https://..."
+                value={projForm.live || ""}
+                onChange={(e) => setProjForm({ ...projForm, live: e.target.value })}
+              />
+            </div>
+
             <div className="flex gap-3 items-center mt-2 md:col-span-2">
               <input
                 type="checkbox"
@@ -189,7 +205,7 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
             <button
               type="button"
               onClick={() => addArrayItem("stack")}
-              className="text-[10px] text-accent hover:underline font-dm-mono cursor-pointer bg-transparent border-none outline-none"
+              className="btn-link-accent"
             >
               + Add Tech Tag
             </button>
@@ -211,7 +227,7 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
                 <button
                   type="button"
                   onClick={() => removeArrayItem("stack", idx)}
-                  className="text-red-400 hover:bg-red-50 p-2 rounded-lg text-xs cursor-pointer bg-transparent border-none outline-none"
+                  className="btn-icon-danger"
                 >
                   ✕
                 </button>
@@ -227,7 +243,7 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
             <button
               type="button"
               onClick={() => addArrayItem("features")}
-              className="text-[10px] text-accent hover:underline font-dm-mono cursor-pointer bg-transparent border-none outline-none"
+              className="btn-link-accent"
             >
               + Add Feature Point
             </button>
@@ -249,7 +265,7 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
                 <button
                   type="button"
                   onClick={() => removeArrayItem("features", idx)}
-                  className="text-red-400 hover:bg-red-50 p-2 rounded-lg text-xs cursor-pointer mt-1 bg-transparent border-none outline-none"
+                  className="btn-icon-danger mt-1"
                 >
                   ✕
                 </button>
@@ -301,30 +317,30 @@ export const ProjectsForm = ({ projects, onSave, onAdd, onDelete, showToast, sav
 
       <div className="flex flex-col gap-4 w-full">
         {projects.map((proj) => (
-          <div key={proj.id} className="bg-white border border-[#f0ddc8] rounded-[20px] p-6 flex justify-between items-center shadow-[0_2px_12px_rgba(194,97,26,0.02)] w-full">
+          <div key={proj.id} className="admin-card-panel flex justify-between items-center w-full">
             <div className="flex-1">
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold text-[15px]">{proj.title}</h3>
                 {proj.featured && (
-                  <span className="px-2 py-0.5 rounded bg-accent-light text-[9px] font-bold text-accent font-dm-mono uppercase border border-accent-border">
+                  <span className="badge-featured">
                     Featured
                   </span>
                 )}
               </div>
               <p className="text-[12px] text-text-muted font-lora mt-1">{proj.tagline}</p>
-              <div className="text-[10px] text-text-light font-dm-mono mt-1.5">{proj.period}</div>
+              <div className="meta-date mt-1.5">{proj.period}</div>
             </div>
 
             <div className="flex gap-2">
               <button
                 onClick={() => handleEditClick(proj)}
-                className="px-3.5 py-2 border border-[#f0ddc8] hover:bg-[#faf8f5] rounded-xl text-xs font-semibold cursor-pointer text-text-dark bg-transparent outline-none"
+                className="btn-action-outline"
               >
                 Edit
               </button>
               <button
                 onClick={() => handleDelete(proj.id)}
-                className="px-3.5 py-2 border border-red-100 hover:bg-red-50 text-red-500 rounded-xl text-xs font-semibold cursor-pointer bg-transparent outline-none"
+                className="btn-action-danger"
               >
                 Delete
               </button>

@@ -24,7 +24,7 @@ export const Skills = () => {
               thickness={1.5}
               color="var(--color-accent-border)"
             >
-              <div className="text-[11px] font-bold tracking-[0.1em] uppercase text-accent font-dm-mono mb-4 pb-3 border-b border-[#f0ddc8] w-full">
+              <div className="mono-tag divider-b mb-4 pb-3 w-full">
                 {category}
               </div>
               <div className="flex flex-wrap gap-1.5 w-full">

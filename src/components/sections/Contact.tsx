@@ -20,22 +20,41 @@ export const Contact = () => {
           If you're building something interesting, I'd love to hear about it.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+        <div className="flex flex-wrap gap-4 justify-center items-center">
           <Button
             href={`mailto:${profile.email}`}
-            size="lg"
+            size="md"
             variant="primary"
           >
             ✉ {profile.email}
           </Button>
           <Button
-            href="https://github.com/sriharan1929"
+            href={profile.linkedin || "https://www.linkedin.com/in/sriharan-r/"}
             target="_blank"
             rel="noopener noreferrer"
-            size="lg"
+            size="md"
+            variant="outline-light"
+          >
+            ↗ LinkedIn
+          </Button>
+          <Button
+            href={profile.github || "https://github.com/sriharan1929"}
+            target="_blank"
+            rel="noopener noreferrer"
+            size="md"
             variant="outline-light"
           >
             ↗ GitHub
+          </Button>
+          <Button
+            href={profile.resume_url || "/Sriharan_Resume.pdf"}
+            target="_blank"
+            rel="noopener noreferrer"
+            size="md"
+            variant="secondary"
+            className="text-bg-warm border-[#c2a882]/50 hover:text-accent hover:border-accent"
+          >
+            ↓ Download Resume
           </Button>
         </div>
 

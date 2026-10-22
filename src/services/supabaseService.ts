@@ -74,18 +74,21 @@ export const getProjects = async (): Promise<Project[]> => {
 };
 
 export const updateProject = async (proj: Project): Promise<void> => {
+  const updatePayload: Record<string, unknown> = {
+    title: proj.title,
+    tagline: proj.tagline,
+    stack: proj.stack,
+    features: proj.features,
+    period: proj.period,
+    github: proj.github,
+    live: proj.live || null,
+    featured: proj.featured,
+    sort_order: proj.sort_order
+  };
+
   const { error } = await supabase
     .from("projects")
-    .update({
-      title: proj.title,
-      tagline: proj.tagline,
-      stack: proj.stack,
-      features: proj.features,
-      period: proj.period,
-      github: proj.github,
-      featured: proj.featured,
-      sort_order: proj.sort_order
-    })
+    .update(updatePayload)
     .eq("id", proj.id);
 
   if (error) throw error;

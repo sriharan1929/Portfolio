@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS projects (
   features text[] NOT NULL,
   period text NOT NULL,
   github text NOT NULL,
+  live text,
   featured boolean DEFAULT false NOT NULL,
   sort_order integer DEFAULT 0 NOT NULL,
   created_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL

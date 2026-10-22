@@ -18,7 +18,7 @@ export const Experience = () => {
           <FadeIn key={exp.id || idx} delay={idx * 100}>
             <StarBorder
               as="div"
-              className="max-w-[780px] shadow-[0_2px_16px_rgba(194,97,26,0.07)]"
+              className="max-w-[780px] card-shadow-sm"
               innerClassName="p-6 md:p-10 bg-bg-warm flex flex-col"
               radius="24px"
               thickness={1.5}
@@ -26,7 +26,7 @@ export const Experience = () => {
             >
               <div className="flex justify-between items-start flex-wrap gap-4 mb-6 w-full">
                 <div className="flex-1">
-                  <div className="font-cormorant text-[1.6rem] font-bold text-text-dark leading-[1.2]">
+                  <div className="heading-serif text-[1.6rem] leading-[1.2]">
                     {exp.title}
                   </div>
                   <div className="text-[14px] text-accent font-semibold mt-1">
@@ -38,7 +38,7 @@ export const Experience = () => {
                     </div>
                   )}
                 </div>
-                <div className="px-3.5 py-1.5 rounded-full bg-accent-light border border-accent-border text-[12px] font-semibold text-[#7a3c10] font-dm-mono whitespace-nowrap">
+                <div className="badge-status">
                   {exp.period}
                 </div>
               </div>
@@ -46,14 +46,14 @@ export const Experience = () => {
               <div className="flex flex-col gap-2.5 w-full">
                 {exp.points.map((item, i) => (
                   <div key={i} className="flex gap-3 items-start">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent mt-[7px] shrink-0" />
-                    <span className="text-[14px] text-text-muted leading-[1.7] font-lora">{item}</span>
+                    <div className="dot-indicator" />
+                    <span className="body-editorial text-[14px]">{item}</span>
                   </div>
                 ))}
               </div>
 
               {exp.tags && exp.tags.length > 0 && (
-                <div className="mt-6 pt-5 border-t border-[#f0ddc8] flex gap-2 flex-wrap w-full">
+                <div className="divider-t mt-6 pt-5 flex gap-2 flex-wrap w-full">
                   {exp.tags.map((tag) => (
                     <SkillChip key={tag} label={tag} />
                   ))}

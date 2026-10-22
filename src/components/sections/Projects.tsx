@@ -11,11 +11,9 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   return (
     <FadeIn delay={index * 100}>
       <StarBorder
-        as="div"
-        className={`h-full transition-all duration-250 hover:-translate-y-[3px] ${
-          isFeatured
-            ? "shadow-[0_4px_24px_rgba(194,97,26,0.12)] hover:shadow-[0_12px_40px_rgba(194,97,26,0.15)]"
-            : "shadow-none hover:shadow-none"
+        as="article"
+        className={`h-full ${
+          isFeatured ? "card-shadow-md card-shadow-hover" : ""
         }`}
         innerClassName="bg-bg-warm h-full flex flex-col"
         radius="20px"
@@ -25,24 +23,24 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       >
         {/* Header */}
         <div
-          className={`pt-7 px-7 pb-5 border-b border-[#f0ddc8] w-full ${
+          className={`pt-7 px-7 pb-5 divider-b w-full ${
             isFeatured
               ? "bg-gradient-to-br from-[#fde8c8] via-[#fffdf9] to-[#fffdf9] via-[60%]"
               : "bg-transparent"
           }`}
         >
           <div className="flex justify-between items-start mb-2">
-            <h3 className="font-cormorant text-2xl font-bold text-text-dark leading-[1.2] tracking-[-0.01em]">
+            <h3 className="heading-serif text-2xl leading-[1.2]">
               {project.title}
             </h3>
             {isFeatured && (
-              <span className="px-2.5 py-1 rounded-full bg-accent text-white text-[10px] font-bold font-dm-mono tracking-[0.06em] whitespace-nowrap ml-2">
+              <span className="badge-featured ml-2">
                 Featured
               </span>
             )}
           </div>
           <p className="text-[13px] text-text-light leading-[1.6] font-lora">{project.tagline}</p>
-          <div className="text-[11px] text-[#b08060] mt-1.5 font-dm-mono">{project.period}</div>
+          <div className="meta-date mt-1.5">{project.period}</div>
         </div>
 
         {/* Body */}
@@ -58,19 +56,30 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           <div className="flex flex-col gap-2 flex-1">
             {project.features.map((feature: string) => (
               <div key={feature} className="flex gap-2.5 items-start">
-                <div className="w-[5px] h-[5px] rounded-full bg-accent mt-[7px] shrink-0" />
+                <div className="dot-indicator" />
                 <span className="text-[13px] text-text-muted leading-[1.6]">{feature}</span>
               </div>
             ))}
           </div>
 
           {/* CTA */}
-          <div className="flex gap-2.5 pt-2 border-t border-[#f0ddc8] mt-auto">
+          <div className="divider-t flex flex-wrap gap-2.5 pt-3 mt-auto">
+            {project.live && (
+              <Button
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="primary"
+                size="sm"
+              >
+                ↗ Live Demo
+              </Button>
+            )}
             <Button
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              variant="dark"
+              variant={project.live ? "secondary" : "dark"}
               size="sm"
             >
               ↗ GitHub
