@@ -8,7 +8,7 @@ export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className = "", variant = "standard", inputSize = "md", ...props }, ref) => {
-    const baseStyles = "w-full rounded-xl border border-[#f0ddc8] outline-none text-text-dark focus:border-accent leading-relaxed transition-colors duration-150 disabled:cursor-not-allowed";
+    const baseStyles = "w-full rounded-xl border border-warm outline-none text-text-dark focus:border-accent leading-relaxed transition-colors duration-150 disabled:cursor-not-allowed";
 
     const variants = {
       standard: "bg-white disabled:bg-[#faf8f5]",

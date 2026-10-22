@@ -28,7 +28,7 @@ export const Hero = () => {
             <div className="bg-white/40 backdrop-blur-xl border border-white/60 p-6 md:p-10 rounded-[32px] shadow-[0_8px_32px_rgba(194,97,26,0.05)] relative overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-accent/5 rounded-full blur-3xl -z-10" />
               
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-light border border-accent-border mb-8 relative z-10">
+              <div className="badge-status mb-8 relative z-10">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                 <SectionLabel>Available for opportunities · 2026</SectionLabel>
               </div>
@@ -39,20 +39,20 @@ export const Hero = () => {
                   <div className="absolute -inset-0.5 rounded-full border-[2px] border-[#e8a05a] animate-[spin_10s_linear_infinite] border-dashed"></div>
                   <img src={profilePic} alt={profile.name} className="w-24 h-24 rounded-full object-cover border-[3px] border-white shadow-xl relative z-10 group-hover:scale-105 transition-transform duration-300" />
                 </div>
-                <h1 className="font-cormorant text-[clamp(2.2rem,5vw,4.2rem)] font-bold text-text-dark leading-[1.08] tracking-[-0.03em]">
+                <h1 className="heading-serif text-[clamp(2.2rem,5vw,4.2rem)] leading-[1.08]">
                   {profile.hero_title}
                 </h1>
               </div>
 
-              <p className="font-semibold text-accent font-dm-mono tracking-[0.04em] mb-5 uppercase text-[12px] relative z-10">
+              <p className="mono-tag mb-5 text-[12px] relative z-10">
                 {profile.hero_subtitle}
               </p>
 
-              <p className="text-[1.05rem] leading-[1.75] text-text-muted max-w-[460px] mb-10 font-lora relative z-10">
+              <p className="body-editorial text-[1.05rem] max-w-[460px] mb-10 relative z-10">
                 {profile.hero_description}
               </p>
 
-              <div className="flex gap-4 flex-wrap relative z-10">
+              <div className="flex gap-3 flex-wrap relative z-10 items-center">
                 <Button
                   href="#projects"
                   variant="primary"
@@ -60,10 +60,20 @@ export const Hero = () => {
                   View Projects →
                 </Button>
                 <Button
-                  href="mailto:sriharan8072@gmail.com"
+                  href={profile.resume_url || "/Sriharan_Resume.pdf"}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   variant="secondary"
                 >
-                  Get in touch
+                  ↓ Resume
+                </Button>
+                <Button
+                  href={profile.linkedin || "https://www.linkedin.com/in/sriharan-r/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="dark"
+                >
+                  ↗ LinkedIn
                 </Button>
               </div>
             </div>

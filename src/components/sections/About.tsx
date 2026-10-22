@@ -17,7 +17,7 @@ export const About = () => {
           <SectionHeading label="// about.me" title={"Crafting systems\nwith clarity."} />
           <div className="flex flex-col gap-5">
             {profile.about_paragraphs.map((para, idx) => (
-              <p key={idx} className="text-base leading-[1.85] text-text-muted font-lora">
+              <p key={idx} className="body-editorial text-base leading-[1.85]">
                 {para}
               </p>
             ))}
@@ -29,7 +29,7 @@ export const About = () => {
             {/* Education card */}
             <StarBorder
               as="div"
-              className="w-full shadow-[0_2px_12px_rgba(194,97,26,0.06)]"
+              className="w-full card-shadow-sm"
               innerClassName="p-6 bg-bg-warm"
               radius="16px"
               thickness={1.5}
@@ -44,8 +44,8 @@ export const About = () => {
                       <div className="text-[12px] text-text-light mt-0.5">{edu.place}</div>
                     </div>
                     <div className="text-right shrink-0">
-                      <div className="text-[12px] font-semibold text-accent font-dm-mono">{edu.score}</div>
-                      <div className="text-[11px] text-[#b08060]">{edu.year}</div>
+                      <div className="mono-tag text-[12px]">{edu.score}</div>
+                      <div className="meta-date">{edu.year}</div>
                     </div>
                   </div>
                 ))}
@@ -55,7 +55,7 @@ export const About = () => {
             {/* Certifications card */}
             <StarBorder
               as="div"
-              className="w-full shadow-[0_2px_12px_rgba(194,97,26,0.06)]"
+              className="w-full card-shadow-sm"
               innerClassName="p-6 bg-bg-warm"
               radius="16px"
               thickness={1.5}
@@ -76,7 +76,7 @@ export const About = () => {
             {/* Achievement */}
             <StarBorder
               as="div"
-              className="w-full shadow-[0_2px_12px_rgba(194,97,26,0.06)]"
+              className="w-full card-shadow-sm"
               innerClassName="py-5 px-6 bg-gradient-to-br from-[#fde8c8] to-[#fdf4e8] flex items-center gap-3.5"
               radius="16px"
               thickness={1.5}

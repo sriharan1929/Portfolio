@@ -9,6 +9,9 @@ export interface Profile {
   hero_subtitle: string;
   hero_description: string;
   about_paragraphs: string[];
+  linkedin?: string;
+  github?: string;
+  resume_url?: string;
 }
 
 export interface Project {
@@ -19,6 +22,7 @@ export interface Project {
   features: string[];
   period: string;
   github: string;
+  live?: string;
   featured: boolean;
   sort_order: number;
 }

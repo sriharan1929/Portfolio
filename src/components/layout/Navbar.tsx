@@ -29,16 +29,32 @@ export const Navbar = () => {
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex gap-8 items-center">
+        <div className="hidden lg:flex gap-6 items-center">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-[13px] font-medium text-text-muted no-underline tracking-[0.02em] transition-colors duration-200 hover:text-accent"
+              className="nav-link"
             >
               {link.label}
             </a>
           ))}
+          <a
+            href="/Sriharan_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link"
+          >
+            Resume ↗
+          </a>
+          <a
+            href="https://www.linkedin.com/in/sriharan-r/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link"
+          >
+            LinkedIn ↗
+          </a>
           <Button href="mailto:sriharan8072@gmail.com" size="sm">
             Hire me
           </Button>
@@ -53,7 +69,7 @@ export const Navbar = () => {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-bg-warm z-[90] flex flex-col justify-center items-center gap-8 transition-all duration-300 ease-in-out lg:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`fixed inset-0 bg-bg-warm z-[90] flex flex-col justify-center items-center gap-7 transition-all duration-300 ease-in-out lg:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         {NAV_LINKS.map((link) => (
           <a
             key={link.href}
@@ -64,6 +80,24 @@ export const Navbar = () => {
             {link.label}
           </a>
         ))}
+        <a
+          href="/Sriharan_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setMobileMenuOpen(false)}
+          className="text-xl font-dm-mono font-medium text-accent no-underline tracking-[0.02em]"
+        >
+          ↓ Download Resume
+        </a>
+        <a
+          href="https://www.linkedin.com/in/sriharan-r/"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setMobileMenuOpen(false)}
+          className="text-xl font-dm-mono font-medium text-text-muted hover:text-text-dark no-underline tracking-[0.02em]"
+        >
+          ↗ LinkedIn Profile
+        </a>
         <Button href="mailto:sriharan8072@gmail.com" size="lg" onClick={() => setMobileMenuOpen(false)}>
           Hire me
         </Button>
