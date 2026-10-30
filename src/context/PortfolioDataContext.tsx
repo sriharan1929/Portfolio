@@ -31,6 +31,9 @@ interface PortfolioContextType {
   saveEducation: (eduList: Education[]) => Promise<boolean>;
   saveExperience: (expList: Experience[]) => Promise<boolean>;
   refreshData: () => Promise<void>;
+  isResumeOpen: boolean;
+  openResume: () => void;
+  closeResume: () => void;
 }
 
 const PortfolioDataContext = createContext<PortfolioContextType | undefined>(undefined);
@@ -42,6 +45,10 @@ export const PortfolioDataProvider = ({ children }: { children: ReactNode }) => 
   const [education, setEducation] = useState<Education[]>(fallbackEducation);
   const [experience, setExperience] = useState<Experience[]>(fallbackExperience);
   
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const openResume = () => setIsResumeOpen(true);
+  const closeResume = () => setIsResumeOpen(false);
+
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [session, setSession] = useState<Session | null>(null);
@@ -91,7 +98,15 @@ export const PortfolioDataProvider = ({ children }: { children: ReactNode }) => 
 
       // Fetch Projects
       const projectsData = await db.getProjects();
-      setProjects(projectsData);
+      if (projectsData && projectsData.length > 0) {
+        // Merge DB rows with fallback projects to ensure extra projects are always available
+        const dbIds = new Set(projectsData.map(p => p.id));
+        const missingFallbacks = fallbackProjects.filter(p => !dbIds.has(p.id));
+        const mergedProjects = [...projectsData, ...missingFallbacks].sort((a, b) => a.sort_order - b.sort_order);
+        setProjects(mergedProjects);
+      } else {
+        setProjects(fallbackProjects);
+      }
 
       // Fetch Skills
       const skillsData = await db.getSkills();
@@ -290,7 +305,10 @@ export const PortfolioDataProvider = ({ children }: { children: ReactNode }) => 
         deleteProject,
         saveEducation,
         saveExperience,
-        refreshData: loadData
+        refreshData: loadData,
+        isResumeOpen,
+        openResume,
+        closeResume
       }}
     >
       {children}

@@ -49,8 +49,13 @@ export const Button = ({
     );
   }
 
+  const buttonProps = props as React.ButtonHTMLAttributes<HTMLButtonElement>;
   return (
-    <button className={combinedClasses} {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
+    <button
+      type={buttonProps.type || "button"}
+      className={combinedClasses}
+      {...buttonProps}
+    >
       {children}
     </button>
   );

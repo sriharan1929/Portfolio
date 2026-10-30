@@ -94,19 +94,61 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 export const Projects = () => {
   const { projects } = usePortfolioData();
 
+  // Present projects (first 3) and extra projects (cards below)
+  const presentProjects = projects.slice(0, 3);
+  const extraProjects = projects.slice(3);
+
   return (
     <section id="projects" className="py-20 md:py-28 px-6 md:px-8 bg-transparent">
       <div className="max-w-[1100px] mx-auto">
+        {/* Core / Present Projects */}
         <FadeIn>
           <SectionHeading label="// selected.projects" title="Work that speaks for itself." />
         </FadeIn>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
+          {presentProjects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}
         </div>
+
+        {/* Extra Projects Section Below */}
+        {extraProjects.length > 0 && (
+          <div className="mt-16 pt-12 border-t border-[#f0ddc8]">
+            <FadeIn>
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-light border border-accent-border mb-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                    <span className="font-dm-mono text-[11px] font-semibold text-[#7a3c10] uppercase tracking-wider">
+                      Additional Engineering Systems
+                    </span>
+                  </div>
+                  <h3 className="font-cormorant text-2xl md:text-3xl font-bold text-text-dark leading-tight">
+                    Template Engine, Analytics & Web Prototypes
+                  </h3>
+                  <p className="text-sm text-text-muted font-lora mt-1">
+                    AI-powered developer tooling, business intelligence pipelines, and responsive web showcases.
+                  </p>
+                </div>
+                <div className="text-right shrink-0">
+                  <span className="font-dm-mono text-xs text-text-light px-3 py-1.5 rounded-xl bg-bg-warm-secondary border border-[#f0ddc8]">
+                    {extraProjects.length} Additional Cards
+                  </span>
+                </div>
+              </div>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {extraProjects.map((project, i) => (
+                <ProjectCard key={project.id} project={project} index={i + presentProjects.length} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
 };
+
 

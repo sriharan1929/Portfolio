@@ -3,12 +3,12 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { SectionLabel } from "../ui/SectionLabel";
 import { Section } from "../ui/Section";
 import { StarBorder } from "../ui/StarBorder";
-import { Trophy } from "lucide-react";
+import { Trophy, FileText, Download } from "lucide-react";
 import { CERTIFICATIONS } from "../../constants";
 import { usePortfolioData } from "../../context/PortfolioDataContext";
 
 export const About = () => {
-  const { profile, education } = usePortfolioData();
+  const { profile, education, openResume } = usePortfolioData();
 
   return (
     <Section id="about" className="bg-transparent">
@@ -88,6 +88,31 @@ export const About = () => {
                 <div className="text-[12px] text-[#b06830] mt-0.5">Innovative technical solution presentation</div>
               </div>
             </StarBorder>
+
+            {/* Quick Resume Card */}
+            <div className="w-full p-4 rounded-2xl bg-white/70 border border-[#f0ddc8] flex items-center justify-between gap-3 shadow-xs">
+              <div className="flex items-center gap-2.5">
+                <FileText size={18} className="text-accent" />
+                <span className="text-xs font-semibold text-text-dark font-dm-mono">Curriculum Vitae</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={openResume}
+                  className="px-3 py-1 rounded-lg text-xs font-dm-mono font-semibold text-accent hover:bg-accent-light/60 transition-colors cursor-pointer"
+                >
+                  Preview
+                </button>
+                <a
+                  href="/Sriharan_Resume.pdf"
+                  download="Sriharan_R_Resume.pdf"
+                  className="px-3 py-1 rounded-lg text-xs font-dm-mono font-semibold bg-accent text-white hover:bg-accent-hover transition-colors flex items-center gap-1 no-underline"
+                >
+                  <Download size={12} />
+                  <span>PDF</span>
+                </a>
+              </div>
+            </div>
           </div>
         </FadeIn>
       </div>

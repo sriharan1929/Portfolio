@@ -3,10 +3,13 @@ import { NAV_LINKS } from "../../constants";
 import profilePic from "../../assets/Profile.jpg";
 import { Button } from "../ui/Button";
 import { MenuToggle } from "../ui/MenuToggle";
+import { FileText, Download } from "lucide-react";
+import { usePortfolioData } from "../../context/PortfolioDataContext";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { openResume } = usePortfolioData();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -29,7 +32,7 @@ export const Navbar = () => {
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex gap-6 items-center">
+        <div className="hidden lg:flex gap-5 items-center">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -39,14 +42,15 @@ export const Navbar = () => {
               {link.label}
             </a>
           ))}
-          <a
-            href="/Sriharan_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-link"
+          <button
+            type="button"
+            onClick={openResume}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#f0ddc8] hover:border-accent hover:bg-accent-light/40 text-text-muted hover:text-accent font-dm-mono text-xs font-semibold transition-all cursor-pointer bg-white/60 shadow-xs"
+            title="Preview Resume"
           >
-            Resume ↗
-          </a>
+            <FileText size={13} className="text-accent" />
+            <span>Resume</span>
+          </button>
           <a
             href="https://www.linkedin.com/in/sriharan-r/"
             target="_blank"
@@ -69,7 +73,7 @@ export const Navbar = () => {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-bg-warm z-[90] flex flex-col justify-center items-center gap-7 transition-all duration-300 ease-in-out lg:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`fixed inset-0 bg-bg-warm z-[90] flex flex-col justify-center items-center gap-6 transition-all duration-300 ease-in-out lg:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         {NAV_LINKS.map((link) => (
           <a
             key={link.href}
@@ -80,21 +84,32 @@ export const Navbar = () => {
             {link.label}
           </a>
         ))}
+        <button
+          type="button"
+          onClick={() => {
+            setMobileMenuOpen(false);
+            openResume();
+          }}
+          className="text-xl font-dm-mono font-medium text-accent no-underline tracking-[0.02em] flex items-center gap-2 cursor-pointer bg-transparent border-none"
+        >
+          <FileText size={20} />
+          <span>Preview Resume</span>
+        </button>
         <a
           href="/Sriharan_Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
+          download="Sriharan_R_Resume.pdf"
           onClick={() => setMobileMenuOpen(false)}
-          className="text-xl font-dm-mono font-medium text-accent no-underline tracking-[0.02em]"
+          className="text-base font-dm-mono text-text-muted hover:text-accent no-underline flex items-center gap-2"
         >
-          ↓ Download Resume
+          <Download size={16} />
+          <span>Download PDF</span>
         </a>
         <a
           href="https://www.linkedin.com/in/sriharan-r/"
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setMobileMenuOpen(false)}
-          className="text-xl font-dm-mono font-medium text-text-muted hover:text-text-dark no-underline tracking-[0.02em]"
+          className="text-base font-dm-mono text-text-muted hover:text-text-dark no-underline tracking-[0.02em]"
         >
           ↗ LinkedIn Profile
         </a>

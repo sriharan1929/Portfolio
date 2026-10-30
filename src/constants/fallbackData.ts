@@ -34,7 +34,7 @@ export const fallbackProjects: Project[] = [
   {
     id: "zip-rag",
     title: "ZIP-RAG v2.0",
-    tagline: "Production-Grade Offline Multi-Format Document Intelligence System",
+    tagline: "Multi-Format Offline RAG & Document Intelligence System",
     stack: ["React 19", "FastAPI", "Python", "LangChain", "BM25", "FAISS", "Ollama", "RapidOCR"],
     features: [
       "Engineered offline-first document intelligence pipeline processing PDFs, Word, Excel, ZIP archives, and source code without cloud dependency.",
@@ -48,25 +48,10 @@ export const fallbackProjects: Project[] = [
     sort_order: 1
   },
   {
-    id: "agentic-ai",
-    title: "Agentic AI Template Engine",
-    tagline: "AI-Powered Full-Stack Code & Boilerplate Generation Engine",
-    stack: ["React", "TypeScript", "Vite", "FastAPI", "Python", "Jinja2", "OpenRouter"],
-    features: [
-      "Built an automated developer scaffolding platform generating structured, production-ready frontend and backend boilerplate from natural language prompts.",
-      "Implemented dual generation workflows: natural-language AI prompt generation and an interactive entity/schema builder for granular model configuration.",
-      "Engineered a modular Jinja2 templating system supporting custom template uploads, multi-provider LLM integration via OpenRouter, and live code preview."
-    ],
-    period: "Jan 2026 - Present",
-    github: "https://github.com/sriharan1929/Agentic_AI",
-    featured: true,
-    sort_order: 2
-  },
-  {
-    id: "my-learning-os",
-    title: "My Learning OS",
-    tagline: "Personal Learning Management System & Knowledge Workspace",
-    stack: ["React", "Vite", "Node.js", "Express", "MongoDB", "JWT", "Zod"],
+    id: "learning-management-system",
+    title: "Personal Learning Management System",
+    tagline: "Full-Stack MERN Learning Management & Knowledge Workspace",
+    stack: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "Zod"],
     features: [
       "Developed a full-stack learning workspace centralizing notes, study roadmaps, checklists, Kanban topics, tasks, and goals in a Scandinavian/Japandi aesthetic.",
       "Integrated a built-in Pomodoro focus timer, interactive calendar scheduler, study analytics dashboard, resource bookmarking, and diary reflection logs.",
@@ -76,27 +61,12 @@ export const fallbackProjects: Project[] = [
     github: "https://github.com/sriharan1929/My_Learning_Assist",
     live: "https://my-learning-assist-client.vercel.app/",
     featured: true,
-    sort_order: 3
-  },
-  {
-    id: "supply-chain-360",
-    title: "Supply Chain 360",
-    tagline: "Supply Chain Analytics & Business Intelligence Platform",
-    stack: ["Python", "Pandas", "NumPy", "PostgreSQL", "SQLAlchemy", "Power BI", "DAX"],
-    features: [
-      "Architected an end-to-end supply chain analytics platform tracking flows from supplier procurement to warehouse distribution, delivery, and returns.",
-      "Built automated data modeling pipelines using PostgreSQL and SQLAlchemy with KPI aggregations across inventory levels, order fulfillment, and logistics.",
-      "Designed interactive Power BI dashboards using custom DAX measures for executive reporting on supplier performance, operational bottlenecks, and cost profitability."
-    ],
-    period: "Jul 2025 - Nov 2025",
-    github: "https://github.com/sriharan1929/Supply_Chain_Analyst",
-    featured: false,
-    sort_order: 4
+    sort_order: 2
   },
   {
     id: "wholesale",
-    title: "Wholesale Management System",
-    tagline: "Desktop Inventory & Product Distribution System",
+    title: "Online Wholesale Shop Management System",
+    tagline: "Java-Based Wholesale Inventory & Persistence System",
     stack: ["Java", "Java Swing", "JDBC", "MySQL"],
     features: [
       "Built a Java desktop ERP application for managing wholesale inventory, category distribution (groceries, dairy, produce), and product catalogs.",
@@ -106,6 +76,36 @@ export const fallbackProjects: Project[] = [
     period: "Dec 2023 - Apr 2024",
     github: "https://github.com/sriharan1929/wholesale_management",
     featured: false,
+    sort_order: 3
+  },
+  {
+    id: "agentic-ai",
+    title: "Agentic AI Template Engine",
+    tagline: "AI-Powered Full-Stack Code & Boilerplate Generation Engine",
+    stack: ["Python", "FastAPI", "React", "TypeScript", "Vite", "Jinja2", "OpenRouter"],
+    features: [
+      "Built a full-stack developer tool using React, TypeScript, FastAPI and Jinja2 that generates structured frontend and backend boilerplate from natural-language prompts or custom schemas.",
+      "Engineered dual generation workflows: natural-language AI generation mode and an interactive schema/entity builder for custom models and fields.",
+      "Added reusable template sets, configurable multi-provider LLMs via OpenRouter, generated-file previews, and instant code copying."
+    ],
+    period: "Jan 2026 - Present",
+    github: "https://github.com/sriharan1929/Agentic_AI",
+    featured: false,
+    sort_order: 4
+  },
+  {
+    id: "supply-chain-360",
+    title: "Supply Chain 360",
+    tagline: "End-to-End Supply Chain Analytics Platform",
+    stack: ["Python", "Pandas", "NumPy", "PostgreSQL", "SQLAlchemy", "Power BI", "DAX"],
+    features: [
+      "Architected an end-to-end supply chain analytics platform tracking flows from supplier procurement to warehouse distribution, delivery, and returns.",
+      "Built automated data modeling pipelines using PostgreSQL and SQLAlchemy with KPI aggregations across inventory levels, order fulfillment, and logistics.",
+      "Designed interactive Power BI dashboards using custom DAX measures for executive reporting on supplier performance, operational bottlenecks, and cost profitability."
+    ],
+    period: "Jul 2025 - Nov 2025",
+    github: "https://github.com/sriharan1929/Supply_Chain_Analyst",
+    featured: false,
     sort_order: 5
   },
   {
@@ -114,8 +114,9 @@ export const fallbackProjects: Project[] = [
     tagline: "Responsive Motorcycle Product Showcase & Modern Landing Page",
     stack: ["HTML5", "CSS3", "JavaScript", "Bootstrap 5"],
     features: [
-      "Crafted an immersive, responsive product landing page showcasing specifications, motorcycle imagery, and interactive call-to-action sections.",
-      "Implemented custom theme switching, smooth micro-interactions, responsive grid layout, and optimized media rendering across all devices."
+      "Crafted an immersive, responsive product landing page for the KTM 390 Duke showcasing specifications, motorcycle imagery, and interactive call-to-action sections.",
+      "Engineered user-controlled light/dark mode theme toggle, fluid hover animations, responsive grid layout, and cross-device mobile optimization.",
+      "Structured clean, accessible component styling with Bootstrap 5 and vanilla JavaScript."
     ],
     period: "Aug 2024 - Sep 2024",
     github: "https://github.com/sriharan1929/Simple-UI",

@@ -3,11 +3,12 @@ import { SectionLabel } from "../ui/SectionLabel";
 import { DeskIllustration } from "./DeskIllustration";
 import profilePic from "../../assets/Profile.jpg";
 import { Button } from "../ui/Button";
+import { Eye, Download } from "lucide-react";
 import { usePortfolioData } from "../../context/PortfolioDataContext";
 
 export const Hero = () => {
   const [mounted, setMounted] = useState(false);
-  const { profile } = usePortfolioData();
+  const { profile, openResume } = usePortfolioData();
   
   useEffect(() => { setTimeout(() => setMounted(true), 100); }, []);
 
@@ -60,20 +61,21 @@ export const Hero = () => {
                   View Projects →
                 </Button>
                 <Button
-                  href={profile.resume_url || "/Sriharan_Resume.pdf"}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={openResume}
                   variant="secondary"
+                  className="flex items-center gap-1.5"
                 >
-                  ↓ Resume
+                  <Eye size={15} className="text-accent" />
+                  <span>Preview Resume</span>
                 </Button>
                 <Button
-                  href={profile.linkedin || "https://www.linkedin.com/in/sriharan-r/"}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={profile.resume_url || "/Sriharan_Resume.pdf"}
+                  download="Sriharan_R_Resume.pdf"
                   variant="dark"
+                  className="flex items-center gap-1.5"
                 >
-                  ↗ LinkedIn
+                  <Download size={14} />
+                  <span>Download PDF</span>
                 </Button>
               </div>
             </div>

@@ -11,6 +11,8 @@ import { Contact } from "./components/sections/Contact";
 import { AdminLogin } from "./components/admin/AdminLogin";
 import { AdminPanel } from "./components/admin/AdminPanel";
 import { DotGrid } from "./components/ui/DotGrid";
+import { ResumeModal } from "./components/ui/ResumeModal";
+import { usePortfolioData } from "./context/PortfolioDataContext";
 
 import "./index.css";
 
@@ -25,6 +27,7 @@ export const navigate = (path: string) => {
 
 function Router() {
   const [currentPath, setCurrentPath] = useState("/");
+  const { isResumeOpen, closeResume } = usePortfolioData();
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -81,6 +84,7 @@ function Router() {
         <Contact />
       </main>
       <Footer />
+      <ResumeModal isOpen={isResumeOpen} onClose={closeResume} />
     </>
   );
 }

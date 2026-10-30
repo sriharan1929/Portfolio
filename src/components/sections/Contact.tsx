@@ -2,10 +2,11 @@ import { FadeIn } from "../ui/FadeIn";
 import { SectionLabel } from "../ui/SectionLabel";
 import { Button } from "../ui/Button";
 import { Section } from "../ui/Section";
+import { Eye, Download } from "lucide-react";
 import { usePortfolioData } from "../../context/PortfolioDataContext";
 
 export const Contact = () => {
-  const { profile } = usePortfolioData();
+  const { profile, openResume } = usePortfolioData();
 
   return (
     <Section id="contact" className="bg-[#1a1410]" innerClassName="max-w-[800px] mx-auto text-center">
@@ -20,7 +21,7 @@ export const Contact = () => {
           If you're building something interesting, I'd love to hear about it.
         </p>
 
-        <div className="flex flex-wrap gap-4 justify-center items-center">
+        <div className="flex flex-wrap gap-3.5 justify-center items-center">
           <Button
             href={`mailto:${profile.email}`}
             size="md"
@@ -47,14 +48,23 @@ export const Contact = () => {
             ↗ GitHub
           </Button>
           <Button
-            href={profile.resume_url || "/Sriharan_Resume.pdf"}
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={openResume}
             size="md"
             variant="secondary"
-            className="text-bg-warm border-[#c2a882]/50 hover:text-accent hover:border-accent"
+            className="text-bg-warm border-[#c2a882]/50 hover:text-accent hover:border-accent flex items-center gap-1.5"
           >
-            ↓ Download Resume
+            <Eye size={15} />
+            <span>Preview Resume</span>
+          </Button>
+          <Button
+            href={profile.resume_url || "/Sriharan_Resume.pdf"}
+            download="Sriharan_R_Resume.pdf"
+            size="md"
+            variant="secondary"
+            className="text-bg-warm border-[#c2a882]/50 hover:text-accent hover:border-accent flex items-center gap-1.5"
+          >
+            <Download size={15} />
+            <span>Download PDF</span>
           </Button>
         </div>
 
